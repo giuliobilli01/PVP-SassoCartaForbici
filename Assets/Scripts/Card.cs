@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject {
     
-    private int id; // 1 = carta, 2 = sasso, 3 = forbici
+    public int id; // 1 = carta, 2 = sasso, 3 = forbici
     // private string name; -> ci serve davvero?
     // private int owner;
 
@@ -18,6 +18,5 @@ public class Card : ScriptableObject {
     public Card(int Id) {
         this.id = Id;
     }
-
 
 }
