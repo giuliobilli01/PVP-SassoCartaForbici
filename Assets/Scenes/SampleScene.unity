@@ -278,6 +278,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8699910263085364709, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+      propertyPath: database
+      value: 
+      objectReference: {fileID: 1470782519}
+    - target: {fileID: 8699910263085364709, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+      propertyPath: linkedPrefab
+      value: 
+      objectReference: {fileID: 8481765974237144408, guid: 1385180b108561141af94eba36ac5f51, type: 3}
     - target: {fileID: 8778582635144817765, guid: 1385180b108561141af94eba36ac5f51, type: 3}
       propertyPath: linkedPrefab
       value: 
@@ -290,7 +298,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3104318709449737009, guid: 1385180b108561141af94eba36ac5f51, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1385180b108561141af94eba36ac5f51, type: 3}
 --- !u!1 &696214805 stripped
 GameObject:
