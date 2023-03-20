@@ -7,7 +7,8 @@ public class SlotScript : MonoBehaviour
     // importo uno scriptableObject
     public Card card;
 
-    void Start() {
+    void Start() 
+    {
         
     }
 
