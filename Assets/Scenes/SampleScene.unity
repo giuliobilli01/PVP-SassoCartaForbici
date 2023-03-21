@@ -218,6 +218,26 @@ PrefabInstance:
       propertyPath: linkedPrefab
       value: 
       objectReference: {fileID: 696214805}
+    - target: {fileID: 3663103223784007237, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+      propertyPath: rock
+      value: 
+      objectReference: {fileID: 11400000, guid: 2eecea5c90e09994b96fa7513c83ea40, type: 2}
+    - target: {fileID: 3663103223784007237, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+      propertyPath: paper
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b3057b304bb9aa4e8dab0086ef2cc95, type: 2}
+    - target: {fileID: 3663103223784007237, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+      propertyPath: scissors
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a1002e1ee0471047871faa94b622630, type: 2}
+    - target: {fileID: 3663103223784007237, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+      propertyPath: linkedPrefab
+      value: 
+      objectReference: {fileID: 8481765974237144408, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+    - target: {fileID: 5267185527984987189, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+      propertyPath: linkedPrefab
+      value: 
+      objectReference: {fileID: 696214805}
     - target: {fileID: 8029675869871456251, guid: 1385180b108561141af94eba36ac5f51, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -449,6 +469,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3104318709449737009, guid: 1385180b108561141af94eba36ac5f51, type: 3}
+      propertyPath: linkedPrefab
+      value: 
+      objectReference: {fileID: 2008962488}
+    - target: {fileID: 5267185527984987189, guid: 1385180b108561141af94eba36ac5f51, type: 3}
       propertyPath: linkedPrefab
       value: 
       objectReference: {fileID: 2008962488}
