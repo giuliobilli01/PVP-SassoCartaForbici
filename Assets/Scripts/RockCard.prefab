@@ -98,3 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   card: {fileID: 11400000, guid: 2eecea5c90e09994b96fa7513c83ea40, type: 2}
+  spriteRenderer: {fileID: -381343681465048398}
+  id: 0

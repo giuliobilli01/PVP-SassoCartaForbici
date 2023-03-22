@@ -8,6 +8,8 @@ public class CardController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public int id;
 
+    public GameObject currentSlot;
+
     void Awake()
     {
         init();
