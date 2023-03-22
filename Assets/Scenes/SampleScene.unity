@@ -258,6 +258,54 @@ RectTransform:
   m_AnchoredPosition: {x: 500, y: 0}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &391221491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391221493}
+  - component: {fileID: 391221492}
+  m_Layer: 0
+  m_Name: GameData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &391221492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391221491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592b8a9d79477bd43bf471ba60cbb02e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1Table: []
+  Player2Table: []
+  Player1Deck: []
+  Player2Deck: []
+--- !u!4 &391221493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391221491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3389707, y: -0.33932546, z: -0.01825034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678938290}
-  - component: {fileID: 678938289}
+  - component: {fileID: 678938291}
   m_Layer: 0
   m_Name: CardSpawner
   m_TagString: Untagged
@@ -359,21 +407,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &678938289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678938288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae7de0ad6fb59424fb73f93ed212449e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paperCard: {fileID: 372002254108320294, guid: 563b05cb21fd1d34cbfc5909299b72c9, type: 3}
-  rockCard: {fileID: 6262577361030997355, guid: 6c3416bbdf559b24e9f71a5c71b5185f, type: 3}
-  scissorsCard: {fileID: 8566044700990306376, guid: 5d4eb933bd7cc354b82e2682462cb5da, type: 3}
 --- !u!4 &678938290
 Transform:
   m_ObjectHideFlags: 0
@@ -389,6 +422,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &678938291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678938288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7de0ad6fb59424fb73f93ed212449e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paperCard: {fileID: 372002254108320294, guid: 563b05cb21fd1d34cbfc5909299b72c9, type: 3}
+  rockCard: {fileID: 6262577361030997355, guid: 6c3416bbdf559b24e9f71a5c71b5185f, type: 3}
+  scissorsCard: {fileID: 8566044700990306376, guid: 5d4eb933bd7cc354b82e2682462cb5da, type: 3}
 --- !u!1001 &696214804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -552,7 +600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd92ceb8a76ee845a9f2a97e72945c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 6b32c3ce72896bc469cb6ce6243521f9, type: 2}
 --- !u!1 &1156211810
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd92ceb8a76ee845a9f2a97e72945c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: cfec96b133e50d040bd46fe045841e67, type: 2}
 --- !u!1 &1440932830
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beca0f5dc3ebe4b4d8adff97574e4adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eachTypeCardNumber: 2
 --- !u!4 &1470782521
 Transform:
   m_ObjectHideFlags: 0
