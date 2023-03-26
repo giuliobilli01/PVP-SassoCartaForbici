@@ -8,24 +8,43 @@ public class TimerManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public float remainingTime;
+    public float countdownTime;
     
     public TMP_Text timerText;
+    public TMP_Text countdownText;
 
     private bool timerIsRunning = false;
 
+    private bool countdownIsRunning = false;
+
     void Start() {
         timerText.enabled = false;
+        countdownText.enabled = false;
     }
 
    
     void Update()
     {
+        if (countdownIsRunning) {
+    
+            if (countdownTime > 0) {
+                DisplayTime(countdownText, countdownTime);
+                countdownTime -= Time.deltaTime;
+            } else {
+                countdownTime = 0;
+                countdownIsRunning = false;
+                countdownText.enabled = false;
+                timerIsRunning = true;
+            }
+            
+        }
+
         if (timerIsRunning) {
             if (remainingTime > 0) {
                 if (remainingTime <= 3) {
                     timerText.enabled = true;   
                 }
-                DisplayTime(remainingTime);
+                DisplayTime(timerText, remainingTime);
                 remainingTime -= Time.deltaTime;
             }else {
                 remainingTime = 0;
@@ -37,14 +56,19 @@ public class TimerManager : MonoBehaviour
         
     }
 
-    public void DisplayTime(float timeToDisplay) {
+    public void DisplayTime(TMP_Text text, float timeToDisplay) {
         timeToDisplay += 1;
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-        timerText.text = string.Format("{0:0}", seconds);
+        text.text = string.Format("{0:0}", seconds);
     }
 
     public void StartTimer() {
         timerIsRunning = true;
+    }
+
+    public void StartCountdown() {
+        countdownIsRunning = true;
+        countdownText.enabled = true;
     }
 }
 

@@ -6,17 +6,7 @@ using UnityEngine;
 // serializable class for card data
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject {
-    
     public int id; // 1 = carta, 2 = sasso, 3 = forbici
-    // private string name; -> ci serve davvero?
-    // private int owner;
-
-    public int Id { get => id; set => id = value; }
-    // public string Name { get => name; set => name = value; }
-    // public int Owner { get => owner; set => owner = value; }
-    
-    public Card(int Id) {
-        this.id = Id;
-    }
+    public Sprite cardSprite;
 
 }
