@@ -10,6 +10,8 @@ public class GameDataSingletonScript : MonoBehaviour
 
     public int numberOfPlayerSlots;
 
+    // Sscript slot che ha un metodo swap che prende una carta in input e quando viene triggerato 
+    // quando la carta viene spostato
 
     public List<GameObject> Player1Table = new List<GameObject>();
     public List<GameObject> Player1Deck = new List<GameObject>();
@@ -51,5 +53,9 @@ public class GameDataSingletonScript : MonoBehaviour
             }
        }
     }
+
+    // public int[] GetTablePoints() {
+    //     // Controllare lo script delle carte nelle stesse posizioni.
+    // }
 
 }

@@ -30,6 +30,14 @@ public class CardSpawnerScript : MonoBehaviour
     private void TableInitialization(int cardTypeIndex) {
         InsertAndInstantiate("table", cardTypes[cardTypeIndex], cardTypeIndex);
     }
+    // componenti : giocatore, tavolo, deck, cardData(scriptable), card, slot (ha una carta all'interno), partita(timer e altri oggetti)
+
+    // creare un una classe player che contiene il deck e il table
+    // separare spawner in deck e tavolo ?
+    // evitare le stringhe
+    // Dat -> carta Giocatore -> tavolo, deck
+    // 
+    // 
 
     private void InsertAndInstantiate(string position, GameObject cardType, int slotIndex)
     {
