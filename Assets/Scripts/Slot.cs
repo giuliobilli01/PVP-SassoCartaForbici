@@ -17,12 +17,14 @@ public class Slot : MonoBehaviour {
 
     // awake
     private void Awake() {
-        // set card type
-        this.card.SetCardType(cardType);
+        
+        this.card.Initialize();
+        this.card.SetCardType(this.cardType);
+        Debug.Log(this.card.GetCardType());
     }
 
     public CardType GetCardType() {
-        return cardType;
+        return this.card.GetCardType();
     }
     
 }

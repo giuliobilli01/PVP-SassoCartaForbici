@@ -1884,38 +1884,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5267185527301404961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8481765974651502668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bc709e8a1d9b9e418b5d8c1a6fdeff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedPrefab: {fileID: 8481765974651502668}
-  paper: {fileID: 11400000, guid: 1b3057b304bb9aa4e8dab0086ef2cc95, type: 2}
-  rock: {fileID: 11400000, guid: 2eecea5c90e09994b96fa7513c83ea40, type: 2}
-  scissors: {fileID: 11400000, guid: 0a1002e1ee0471047871faa94b622630, type: 2}
---- !u!114 &5267185528329062786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8481765975637111023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bc709e8a1d9b9e418b5d8c1a6fdeff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linkedPrefab: {fileID: 8481765975637111023}
-  paper: {fileID: 11400000, guid: 1b3057b304bb9aa4e8dab0086ef2cc95, type: 2}
-  rock: {fileID: 11400000, guid: 2eecea5c90e09994b96fa7513c83ea40, type: 2}
-  scissors: {fileID: 11400000, guid: 0a1002e1ee0471047871faa94b622630, type: 2}
 --- !u!33 &5437988198870500649
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2405,7 +2373,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8029675870258584303}
-  - component: {fileID: 5267185527301404961}
   - component: {fileID: 664094719559125653}
   m_Layer: 0
   m_Name: FirstPlayerSlots
@@ -2423,7 +2390,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8029675871168686668}
-  - component: {fileID: 5267185528329062786}
   - component: {fileID: 664094721132067382}
   m_Layer: 0
   m_Name: SecondPlayerSlots
