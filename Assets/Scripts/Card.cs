@@ -1,12 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
 
-// serializable class for card data
-[CreateAssetMenu(fileName = "New Card", menuName = "Card")]
-public class Card : ScriptableObject {
-    public int id; // 1 = carta, 2 = sasso, 3 = forbici
-    public Sprite cardSprite;
+// card controller
 
+public class Card {
+    
+    private CardData cardData;
+
+    public void SetCardType(CardType cardType) {
+        cardData.cardType = cardType;
+    }
+
+    public CardType GetCardType() {
+        return cardData.cardType;
+    }
+
+    public void SetCardData(CardData cardData) {
+        this.cardData = cardData;
+    }
+
+    
 }
