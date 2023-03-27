@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     
-    // to-do
+    public PointsManager pointsManager;
+    public TimerManager timerManager;
+
+    void Update() {
+        if (timerManager.IsTimerPassed()) {
+            pointsManager.UpdatePlayersPoints();
+            timerManager.SetIsTimerPassed(false);
+        }
+    }
+
+    
 
 }
