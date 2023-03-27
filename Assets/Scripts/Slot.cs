@@ -6,18 +6,18 @@ using UnityEngine;
 public interface ISlot {
 
     void Swap();
-
+    
 }
 
 public class Slot : MonoBehaviour {
 
     private Card card = new Card();
-    
+
     [SerializeField] private CardType cardType;
 
     // awake
     private void Awake() {
-        
+
         this.card.Initialize();
         this.card.SetCardType(this.cardType);
         Debug.Log(this.card.GetCardType());
