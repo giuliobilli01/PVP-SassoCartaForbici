@@ -8,7 +8,7 @@ public enum SlotStatus {
     Draw,
     Undefined,
 }
-
+//TODO CREARE CLASSE PLAYERPOINTS PER ELIMINARE LO SDOPPIAMENTO
 public class PointsManager : MonoBehaviour
 {  
     [SerializeField]
@@ -24,10 +24,6 @@ public class PointsManager : MonoBehaviour
             firstPlayerPoints.Add(SlotStatus.Undefined);
             secondPlayerPoints.Add(SlotStatus.Undefined);
         }
-    }
-    void Update()
-    {
-        
     }
 
     public void UpdatePlayersPoints() {
@@ -54,6 +50,7 @@ public class PointsManager : MonoBehaviour
                     pointsUIManager.SetTextByIndex(position, SlotStatus.Draw);
             }
         }
+        GetMatchResult();
     }
 
     private bool IsTheWinner(CardType player, CardType opponent) {
@@ -77,6 +74,18 @@ public class PointsManager : MonoBehaviour
             }
         }
     } 
+    public bool GetMatchResult() {
+        int player1Win = 0;
+        int player2Win = 0;
 
-
+        for(int i=0; i<firstPlayerPoints.Count; i++) {
+            if (firstPlayerPoints[i] == SlotStatus.Win) {
+                player1Win++;
+            }
+            if (secondPlayerPoints[i] == SlotStatus.Win) {
+                player2Win++;
+            }
+        }
+        return player1Win > player2Win;
+    }
 }
