@@ -304,8 +304,8 @@ MonoBehaviour:
       m_Action: Mouse Click
       m_Flags: 0
     m_Flags: 0
-  mouseDragSpeed: 10
-  mouseDragSmoothSpeed: 0.01
+  smoothTime: 0.1
+  slotManager: {fileID: 1094672539}
 --- !u!4 &259681309
 Transform:
   m_ObjectHideFlags: 0
@@ -1427,66 +1427,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7130898671293170478}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &664094719559125653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8481765974651502668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: 0}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &664094721132067382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8481765975637111023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: 0}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!4 &826929997943523705
 Transform:
   m_ObjectHideFlags: 0
@@ -2033,7 +1973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 2
 --- !u!23 &6267881355903468976
 MeshRenderer:
@@ -2089,7 +2028,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 2
 --- !u!65 &6662744707382329587
 BoxCollider:
@@ -2189,7 +2127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 0
 --- !u!1 &7130898671293170478
 GameObject:
@@ -2223,7 +2160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 0
 --- !u!65 &7185282911928922905
 BoxCollider:
@@ -2283,7 +2219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 1
 --- !u!1 &7399188381594958874
 GameObject:
@@ -2317,7 +2252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 1
 --- !u!4 &7641930901532942635
 Transform:
@@ -2369,7 +2303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 1
 --- !u!33 &7737967172570036668
 MeshFilter:
@@ -2391,7 +2324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 1
 --- !u!4 &8029675870258584303
 Transform:
@@ -2444,7 +2376,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8029675870258584303}
-  - component: {fileID: 664094719559125653}
   m_Layer: 0
   m_Name: FirstPlayerSlots
   m_TagString: Untagged
@@ -2461,7 +2392,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8029675871168686668}
-  - component: {fileID: 664094721132067382}
   m_Layer: 0
   m_Name: SecondPlayerSlots
   m_TagString: Untagged
@@ -2578,7 +2508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 2
 --- !u!65 &8656737486497794180
 BoxCollider:
@@ -2605,7 +2534,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 2
 --- !u!33 &9143667202767673572
 MeshFilter:
@@ -2627,7 +2555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 0
 --- !u!33 &9143667203946211399
 MeshFilter:
@@ -2649,5 +2576,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cd510c9103da34ca64ab02ed1ab63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragAndDrop: {fileID: 0}
   cardType: 0

@@ -12,6 +12,12 @@ public class DragAndDrop : MonoBehaviour {
     private Camera mainCamera;
     private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
+    private GameObject selectedObject;
+    private Slot selectedSlot;
+
+    [SerializeField] private SlotManager slotManager;
+
+
     private void Awake() {
         this.mainCamera = Camera.main;
     }
@@ -33,7 +39,10 @@ public class DragAndDrop : MonoBehaviour {
 
         if (Physics.Raycast(ray, out RaycastHit hit)) {
             if (hit.collider != null) {
-                StartCoroutine(MoveObject(hit.collider.gameObject));
+
+                selectedObject = hit.collider.gameObject;
+                selectedSlot = selectedObject.GetComponent<Slot>();
+                StartCoroutine(MoveObject(selectedObject));
             }
         }
     }
@@ -50,12 +59,22 @@ public class DragAndDrop : MonoBehaviour {
             yield return waitForFixedUpdate;
         }
         // drop
-        // check if the object is over another object
-        if (Physics.Raycast(selectedObject.transform.position, Vector3.down, out RaycastHit hit, 1f)) {
-           // if (hit.collider.gameObject != selectedObject) {
+        CheckOverlappingSlots();
 
-                Debug.Log("Swap");
-          //  }
-        } 
     }
+
+    private void CheckOverlappingSlots() {
+        
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit)) {
+            Slot overlapSlot = hit.collider.GetComponent<Slot>();
+            if (overlapSlot != null && overlapSlot != selectedSlot) {
+                Debug.Log("Overlapping slot");
+                slotManager.Swap(selectedSlot, overlapSlot);
+            }
+        }
+    }
+
+
 }
