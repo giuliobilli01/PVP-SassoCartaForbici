@@ -9,8 +9,8 @@ public class Slot : MonoBehaviour {
 
     [SerializeField] private CardType cardType;
 
-    private Vector3 initialPosition;
-    private Vector3 currentPosition;
+    private Vector3 initialPosition; // for resetting
+    private Vector3 currentPosition; // for handling swap 
 
     // awake
     private void Awake() {
@@ -22,6 +22,10 @@ public class Slot : MonoBehaviour {
 
     public CardType GetCardType() {
         return this.card.GetCardType();
+    }
+
+    public void SetCardType(CardType cardType) {
+        this.card.SetCardType(cardType);
     }
 
     public void SetCurrentPosition(Vector3 position) {
@@ -39,6 +43,7 @@ public class Slot : MonoBehaviour {
     public Vector3 GetInitialPosition() {
         return this.initialPosition;
     }
+
 }
 
 

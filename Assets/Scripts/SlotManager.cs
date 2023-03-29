@@ -10,7 +10,7 @@ public class SlotManager : MonoBehaviour {
     public Transform firstPlayerSlotParent;
     public Transform secondPlayerSlotParent;
 
-    // riempio la lista con tutti gli slot di gioco
+    //  Fill the lists with the slots
     private void Awake() {
         foreach (Transform child in firstPlayerSlotParent.transform) {
             Slot slot = child.GetComponent<Slot>();
@@ -27,6 +27,10 @@ public class SlotManager : MonoBehaviour {
         }
     }
 
+    // Swap handling logic
+    // everytime a slot overlaps with another slot, this method is called
+    // it checks which player the slots belong to and swaps them
+    // it also saves the new positions of the slots
     public void Swap(Slot firstSlot, Slot secondSlot) {
 
         int currentPlayer = GetCurrentPlayer(firstSlot, secondSlot);
@@ -42,6 +46,7 @@ public class SlotManager : MonoBehaviour {
         }
     }
 
+    // swap the slots components in the list
     private void SwapSlotsInList(List<Slot> slotList, Slot firstSlot, Slot secondSlot) {
         
         int firstSlotIndex = slotList.IndexOf(firstSlot);
@@ -50,8 +55,10 @@ public class SlotManager : MonoBehaviour {
         Slot temp = slotList[firstSlotIndex];
         slotList[firstSlotIndex] = slotList[secondSlotIndex];
         slotList[secondSlotIndex] = temp;
+        
     }
 
+    // swap the slots objects in the scene
     private void SwapSlotObjects(Slot firstSlot, Slot secondSlot) {
 
         GameObject firstSlotObject = firstSlot.gameObject;
@@ -61,6 +68,7 @@ public class SlotManager : MonoBehaviour {
         secondSlotObject.transform.position = firstSlot.GetCurrentPosition();
     }
 
+    // check which player the slots belong to
     private int GetCurrentPlayer(Slot firstSlot, Slot secondSlot) {
 
         if (firstPlayerSlots.Contains(firstSlot) && firstPlayerSlots.Contains(secondSlot)) {
@@ -72,12 +80,14 @@ public class SlotManager : MonoBehaviour {
         }
     }
 
+    // save the new positions of the slots
     private void SaveSlotPositions(List<Slot> slotList) {
         for (int i = 0; i < slotList.Count; i++) {
             slotList[i].SetCurrentPosition(slotList[i].transform.position);
         }
     }
 
+    // reset the slots to their initial positions
     public void ResetSlotPosition() {
         for (int i = 0; i < firstPlayerSlots.Count; i++) {
             firstPlayerSlots[i].transform.position = firstPlayerSlots[i].GetInitialPosition();

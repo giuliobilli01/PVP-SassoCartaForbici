@@ -47,6 +47,7 @@ public class DragAndDrop : MonoBehaviour {
         }
     }
 
+    // Coroutine for dragging the card
     private IEnumerator MoveObject(GameObject selectedObject) {
         
         float initialDistance = Vector3.Distance(selectedObject.transform.position, this.mainCamera.transform.position);
@@ -54,15 +55,18 @@ public class DragAndDrop : MonoBehaviour {
         while(mouseClick.ReadValue<float>() > 0) { // drag
             
             Ray ray = this.mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-
+            StartCardParallax(selectedObject);
             selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, ray.GetPoint(initialDistance), ref velocity, smoothTime);
             yield return waitForFixedUpdate;
         }
         // drop
         CheckOverlappingSlots();
+        EndCardParallax(selectedObject);
 
     }
 
+
+    // Check if the card is overlapping with another slot
     private void CheckOverlappingSlots() {
         
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -72,8 +76,28 @@ public class DragAndDrop : MonoBehaviour {
             if (overlapSlot != null && overlapSlot != selectedSlot) {
                 Debug.Log("Overlapping slot");
                 slotManager.Swap(selectedSlot, overlapSlot);
+            } else {
+                // snapping back to previous position
+                selectedSlot.transform.position = selectedSlot.GetCurrentPosition();
             }
         }
+    }
+
+    // Parallax feature
+    // when a card is being dragged, it rotates on itself
+    private void StartCardParallax(GameObject selectedObject) {
+        
+        float maxRotationAngle = 10f;
+        float rotationSpeed = 0.5f;
+
+        float additionalRotation = Mathf.Sin(Time.time * rotationSpeed) * maxRotationAngle;
+        Quaternion rotation = Quaternion.Euler(0, additionalRotation, 0);
+
+        selectedObject.transform.rotation = rotation;
+    }
+
+    private void EndCardParallax(GameObject selectedObject) {
+        selectedObject.transform.rotation = Quaternion.identity;
     }
 
 
