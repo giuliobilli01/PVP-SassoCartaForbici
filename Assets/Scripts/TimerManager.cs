@@ -10,12 +10,19 @@ public class TimerManager : MonoBehaviour
     public float remainingTime;
     public float countdownTime;
     
-    public TMP_Text timerText;
-    public TMP_Text countdownText;
+    [SerializeField]
+    private TMP_Text timerText;
+    
+    [SerializeField]
+    private TMP_Text countdownText;
 
     private bool timerIsRunning = false;
 
+    private bool isTimerPassed = false;
+
     private bool countdownIsRunning = false;
+
+    private bool isGameStarted = false;
 
     void Start() {
         timerText.enabled = false;
@@ -30,11 +37,17 @@ public class TimerManager : MonoBehaviour
             if (countdownTime > 0) {
                 DisplayTime(countdownText, countdownTime);
                 countdownTime -= Time.deltaTime;
+            
+            } else if(countdownTime <= 0 && countdownTime >= -1) {
+                countdownText.text = "SWAP!";
+                countdownTime -= Time.deltaTime;
+            
             } else {
-                countdownTime = 0;
+                countdownTime = -1;
                 countdownIsRunning = false;
                 countdownText.enabled = false;
                 timerIsRunning = true;
+                isGameStarted = true;
             }
             
         }
@@ -49,6 +62,7 @@ public class TimerManager : MonoBehaviour
             }else {
                 remainingTime = 0;
                 timerIsRunning = false;
+                isTimerPassed = true;
                 timerText.enabled = false;
             
             }
@@ -69,6 +83,18 @@ public class TimerManager : MonoBehaviour
     public void StartCountdown() {
         countdownIsRunning = true;
         countdownText.enabled = true;
+    }
+
+    public bool IsTimerPassed() {
+        return isTimerPassed;
+    }
+
+    public void SetIsTimerPassed(bool value){
+        this.isTimerPassed=value;
+    }
+
+    public bool IsGameStarted() {
+        return isGameStarted;
     }
 }
 

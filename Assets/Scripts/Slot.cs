@@ -17,7 +17,6 @@ public class Slot : MonoBehaviour {
 
         this.card.Initialize();
         this.card.SetCardType(this.cardType);
-        Debug.Log(this.card.GetCardType());
     }
 
     public CardType GetCardType() {
