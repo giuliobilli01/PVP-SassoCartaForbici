@@ -22,6 +22,8 @@ public class TimerManager : MonoBehaviour
 
     private bool countdownIsRunning = false;
 
+    private bool isGameStarted = false;
+
     void Start() {
         timerText.enabled = false;
         countdownText.enabled = false;
@@ -45,6 +47,7 @@ public class TimerManager : MonoBehaviour
                 countdownIsRunning = false;
                 countdownText.enabled = false;
                 timerIsRunning = true;
+                isGameStarted = true;
             }
             
         }
@@ -88,6 +91,10 @@ public class TimerManager : MonoBehaviour
 
     public void SetIsTimerPassed(bool value){
         this.isTimerPassed=value;
+    }
+
+    public bool IsGameStarted() {
+        return isGameStarted;
     }
 }
 

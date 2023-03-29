@@ -74,8 +74,13 @@ public class PointsManager : MonoBehaviour
             }
         }
     } 
-    public bool GetMatchResult() {
-       
-        return player1Points.GetNumberOfWin() > player2Points.GetNumberOfWin();
+    public MatchResults GetMatchResult() {
+        if (player1Points.GetNumberOfWin() > player2Points.GetNumberOfWin()) {
+            return MatchResults.Player1Win;
+        }else if (player1Points.GetNumberOfWin() < player2Points.GetNumberOfWin()) {
+            return MatchResults.Player2Win;
+        }else {
+            return MatchResults.Draw;
+        }
     }
 }
