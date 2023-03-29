@@ -16,14 +16,14 @@ public class PointsManager : MonoBehaviour
     
     [SerializeField]
     private PointsUIManager pointsUIManager;
-    private List<SlotStatus> firstPlayerPoints = new List<SlotStatus>();
-    private List<SlotStatus> secondPlayerPoints = new List<SlotStatus>();
+    private PlayerPoints player1Points;
+    private PlayerPoints player2Points;
+
 
     void Awake() {
-        for (int i=0; i<3; i++) {
-            firstPlayerPoints.Add(SlotStatus.Undefined);
-            secondPlayerPoints.Add(SlotStatus.Undefined);
-        }
+       player1Points = new PlayerPoints();
+       player2Points = new PlayerPoints();
+
     }
 
     public void UpdatePlayersPoints() {
@@ -34,23 +34,23 @@ public class PointsManager : MonoBehaviour
             if ((player1Slot != player2Slot)) {
                 if (IsTheWinner(player1Slot, player2Slot)) {
 
-                    this.firstPlayerPoints[position] = SlotStatus.Win;
-                    this.secondPlayerPoints[position] = SlotStatus.Lose;
+                    player1Points.AddStatus(position, SlotStatus.Win);
+                    player2Points.AddStatus(position, SlotStatus.Lose);
                     pointsUIManager.SetTextByIndex(position, SlotStatus.Win);
                 }else {
 
-                    this.secondPlayerPoints[position] = SlotStatus.Win;
-                    this.firstPlayerPoints[position] = SlotStatus.Lose;
+                    player1Points.AddStatus(position, SlotStatus.Lose);
+                    player2Points.AddStatus(position, SlotStatus.Win);
                     pointsUIManager.SetTextByIndex(position, SlotStatus.Lose);
                 }
             } else {
             
-                    this.firstPlayerPoints[position] = SlotStatus.Draw;
-                    this.secondPlayerPoints[position] = SlotStatus.Draw;
+                    player1Points.AddStatus(position, SlotStatus.Draw);
+                    player2Points.AddStatus(position, SlotStatus.Draw);
                     pointsUIManager.SetTextByIndex(position, SlotStatus.Draw);
             }
         }
-        GetMatchResult();
+       Debug.Log(GetMatchResult());
     }
 
     private bool IsTheWinner(CardType player, CardType opponent) {
@@ -75,17 +75,7 @@ public class PointsManager : MonoBehaviour
         }
     } 
     public bool GetMatchResult() {
-        int player1Win = 0;
-        int player2Win = 0;
-
-        for(int i=0; i<firstPlayerPoints.Count; i++) {
-            if (firstPlayerPoints[i] == SlotStatus.Win) {
-                player1Win++;
-            }
-            if (secondPlayerPoints[i] == SlotStatus.Win) {
-                player2Win++;
-            }
-        }
-        return player1Win > player2Win;
+       
+        return player1Points.GetNumberOfWin() > player2Points.GetNumberOfWin();
     }
 }
