@@ -10,8 +10,11 @@ public class TimerManager : MonoBehaviour
     public float remainingTime;
     public float countdownTime;
     
-    public TMP_Text timerText;
-    public TMP_Text countdownText;
+    [SerializeField]
+    private TMP_Text timerText;
+    
+    [SerializeField]
+    private TMP_Text countdownText;
 
     private bool timerIsRunning = false;
 
@@ -32,8 +35,13 @@ public class TimerManager : MonoBehaviour
             if (countdownTime > 0) {
                 DisplayTime(countdownText, countdownTime);
                 countdownTime -= Time.deltaTime;
+            
+            } else if(countdownTime <= 0 && countdownTime >= -1) {
+                countdownText.text = "SWAP!";
+                countdownTime -= Time.deltaTime;
+            
             } else {
-                countdownTime = 0;
+                countdownTime = -1;
                 countdownIsRunning = false;
                 countdownText.enabled = false;
                 timerIsRunning = true;

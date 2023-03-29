@@ -8,7 +8,7 @@ public enum SlotStatus {
     Draw,
     Undefined,
 }
-//TODO CREARE CLASSE PLAYERPOINTS PER ELIMINARE LO SDOPPIAMENTO
+
 public class PointsManager : MonoBehaviour
 {  
     [SerializeField]
