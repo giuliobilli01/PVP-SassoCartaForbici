@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotManager : MonoBehaviour, ISlot {
-    
-    // un unica lista con tutti gli slot di gioco
+public class SlotManager : MonoBehaviour {
 
     public List<Slot> firstPlayerSlots = new List<Slot>();
     public List<Slot> secondPlayerSlots = new List<Slot>();
@@ -12,20 +10,94 @@ public class SlotManager : MonoBehaviour, ISlot {
     public Transform firstPlayerSlotParent;
     public Transform secondPlayerSlotParent;
 
-    // riempio la lista con tutti gli slot di gioco
+    //  Fill the lists with the slots
     private void Awake() {
         foreach (Transform child in firstPlayerSlotParent.transform) {
-            firstPlayerSlots.Add(child.GetComponent<Slot>());
+            Slot slot = child.GetComponent<Slot>();
+            slot.SetInitialPosition(child.position);
+            slot.SetCurrentPosition(child.position);
+            firstPlayerSlots.Add(slot);
         }
 
         foreach (Transform child in secondPlayerSlotParent.transform) {
-            secondPlayerSlots.Add(child.GetComponent<Slot>());
+            Slot slot = child.GetComponent<Slot>();
+            slot.SetInitialPosition(child.position);
+            slot.SetCurrentPosition(child.position);
+            secondPlayerSlots.Add(slot);
         }
     }
 
-    public void Swap() {
+    // Swap handling logic
+    // everytime a slot overlaps with another slot, this method is called
+    // it checks which player the slots belong to and swaps them
+    // it also saves the new positions of the slots
+    public void Swap(Slot firstSlot, Slot secondSlot) {
+
+        int currentPlayer = GetCurrentPlayer(firstSlot, secondSlot);
+
+        if (currentPlayer == 1) {
+            SwapSlotsInList(firstPlayerSlots, firstSlot, secondSlot);
+            SwapSlotObjects(firstSlot, secondSlot);
+            SaveSlotPositions(firstPlayerSlots);
+        } else if (currentPlayer == 2) {
+            SwapSlotsInList(secondPlayerSlots, firstSlot, secondSlot);
+            SwapSlotObjects(firstSlot, secondSlot);
+            SaveSlotPositions(secondPlayerSlots);
+        }
+    }
+
+    // swap the slots components in the list
+    private void SwapSlotsInList(List<Slot> slotList, Slot firstSlot, Slot secondSlot) {
         
-        // to-do
+        int firstSlotIndex = slotList.IndexOf(firstSlot);
+        int secondSlotIndex = slotList.IndexOf(secondSlot);
+
+        Slot temp = slotList[firstSlotIndex];
+        slotList[firstSlotIndex] = slotList[secondSlotIndex];
+        slotList[secondSlotIndex] = temp;
+        
+    }
+
+    // swap the slots objects in the scene
+    private void SwapSlotObjects(Slot firstSlot, Slot secondSlot) {
+
+        GameObject firstSlotObject = firstSlot.gameObject;
+        GameObject secondSlotObject = secondSlot.gameObject;
+
+        firstSlotObject.transform.position = secondSlot.GetCurrentPosition();
+        secondSlotObject.transform.position = firstSlot.GetCurrentPosition();
+    }
+
+    // check which player the slots belong to
+    private int GetCurrentPlayer(Slot firstSlot, Slot secondSlot) {
+
+        if (firstPlayerSlots.Contains(firstSlot) && firstPlayerSlots.Contains(secondSlot)) {
+            return 1;
+        } else if (secondPlayerSlots.Contains(firstSlot) && secondPlayerSlots.Contains(secondSlot)) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
+    // save the new positions of the slots
+    private void SaveSlotPositions(List<Slot> slotList) {
+        for (int i = 0; i < slotList.Count; i++) {
+            slotList[i].SetCurrentPosition(slotList[i].transform.position);
+        }
+    }
+
+    // reset the slots to their initial positions
+    public void ResetSlotPosition() {
+        for (int i = 0; i < firstPlayerSlots.Count; i++) {
+            firstPlayerSlots[i].transform.position = firstPlayerSlots[i].GetInitialPosition();
+            firstPlayerSlots[i].SetCurrentPosition(firstPlayerSlots[i].GetInitialPosition());
+        }
+
+        for (int i = 0; i < secondPlayerSlots.Count; i++) {
+            secondPlayerSlots[i].transform.position = secondPlayerSlots[i].GetInitialPosition();
+            secondPlayerSlots[i].SetCurrentPosition(secondPlayerSlots[i].GetInitialPosition());
+        }
     }
 
 }
