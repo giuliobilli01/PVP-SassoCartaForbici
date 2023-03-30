@@ -4,9 +4,7 @@ using UnityEngine;
 
 public enum MatchResults {
     Player1Win,
-
     Player2Win,
-
     Draw,
 }
 
@@ -18,7 +16,16 @@ public class GameManager : MonoBehaviour {
 
     public UIManager uIManager;
 
+    public DragAndDrop dragManager;
+
     void Update() {
+
+        if (timerManager.IsGameStarted()) {
+            dragManager.enabled = true;
+        } else {
+            dragManager.enabled = false;
+        }
+
         if (timerManager.IsTimerPassed()) {
             pointsManager.UpdatePlayersPoints();
             timerManager.SetIsTimerPassed(false);
