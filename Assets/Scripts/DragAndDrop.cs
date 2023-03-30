@@ -34,7 +34,6 @@ public class DragAndDrop : MonoBehaviour {
 
     private void OnMouseClick(InputAction.CallbackContext context) {
         
-        Debug.Log("Mouse Click");
         Ray ray = this.mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (Physics.Raycast(ray, out RaycastHit hit)) {
@@ -74,11 +73,17 @@ public class DragAndDrop : MonoBehaviour {
         if (Physics.Raycast(ray, out hit)) {
             Slot overlapSlot = hit.collider.GetComponent<Slot>();
             if (overlapSlot != null && overlapSlot != selectedSlot) {
-                Debug.Log("Overlapping slot");
-                slotManager.Swap(selectedSlot, overlapSlot);
+                
+                // avoiding cards overlapping opposite player's cards
+                if (slotManager.GetCurrentPlayer(selectedSlot, overlapSlot) == 0) {
+                    SnapBack();
+                } else {
+                    slotManager.Swap(selectedSlot, overlapSlot);
+                }
+    
             } else {
                 // snapping back to previous position
-                selectedSlot.transform.position = selectedSlot.GetCurrentPosition();
+                SnapBack();
             }
         }
     }
@@ -98,6 +103,12 @@ public class DragAndDrop : MonoBehaviour {
 
     private void EndCardParallax(GameObject selectedObject) {
         selectedObject.transform.rotation = Quaternion.identity;
+    }
+
+    private void SnapBack() {
+
+        iTween.MoveTo(selectedObject, iTween.Hash("position", selectedSlot.GetCurrentPosition(), "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
+        slotManager.UpdateSlotPositions();
     }
 
 

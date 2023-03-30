@@ -38,12 +38,12 @@ public class SlotManager : MonoBehaviour {
         if (currentPlayer == 1) {
             SwapSlotsInList(firstPlayerSlots, firstSlot, secondSlot);
             SwapSlotObjects(firstSlot, secondSlot);
-            SaveSlotPositions(firstPlayerSlots);
         } else if (currentPlayer == 2) {
             SwapSlotsInList(secondPlayerSlots, firstSlot, secondSlot);
             SwapSlotObjects(firstSlot, secondSlot);
-            SaveSlotPositions(secondPlayerSlots);
         }
+
+        UpdateSlotPositions();
     }
 
     // swap the slots components in the list
@@ -65,11 +65,11 @@ public class SlotManager : MonoBehaviour {
         GameObject secondSlotObject = secondSlot.gameObject;
 
         firstSlotObject.transform.position = secondSlot.GetCurrentPosition();
-        secondSlotObject.transform.position = firstSlot.GetCurrentPosition();
+        iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.5f, "easetype", iTween.EaseType.easeOutBack));
     }
 
     // check which player the slots belong to
-    private int GetCurrentPlayer(Slot firstSlot, Slot secondSlot) {
+    public int GetCurrentPlayer(Slot firstSlot, Slot secondSlot) {
 
         if (firstPlayerSlots.Contains(firstSlot) && firstPlayerSlots.Contains(secondSlot)) {
             return 1;
@@ -80,10 +80,14 @@ public class SlotManager : MonoBehaviour {
         }
     }
 
-    // save the new positions of the slots
-    private void SaveSlotPositions(List<Slot> slotList) {
-        for (int i = 0; i < slotList.Count; i++) {
-            slotList[i].SetCurrentPosition(slotList[i].transform.position);
+    // update the new positions of the slots
+    public void UpdateSlotPositions() {
+        
+        for (int i = 0; i < firstPlayerSlots.Count; i++) {
+            firstPlayerSlots[i].SetCurrentPosition(firstPlayerSlots[i].transform.position);
+        }
+        for (int i = 0; i < secondPlayerSlots.Count; i++) {
+            secondPlayerSlots[i].SetCurrentPosition(secondPlayerSlots[i].transform.position);
         }
     }
 
