@@ -92,7 +92,7 @@ public class SlotManager : MonoBehaviour {
     }
 
     // reset the slots to their initial positions
-    public void ResetSlotPosition() {
+    public void ResetSlotPositions() {
         for (int i = 0; i < firstPlayerSlots.Count; i++) {
             firstPlayerSlots[i].transform.position = firstPlayerSlots[i].GetInitialPosition();
             firstPlayerSlots[i].SetCurrentPosition(firstPlayerSlots[i].GetInitialPosition());
