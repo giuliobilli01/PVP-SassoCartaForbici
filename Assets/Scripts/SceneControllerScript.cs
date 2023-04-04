@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class SceneControllerScript : MonoBehaviour
 {
     public SlotManager slotManager;
+    public SceneControl sceneControl;
 
     public void ResetScene() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        sceneControl.Reset();
         slotManager.ResetSlotPositions();
+    }
+
+    public void GoToMenu() {
+        sceneControl.Load();
     }
 }
