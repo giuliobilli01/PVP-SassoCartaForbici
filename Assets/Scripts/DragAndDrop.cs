@@ -57,6 +57,7 @@ public class DragAndDrop : MonoBehaviour {
             StartCardParallax(selectedObject);
             selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, ray.GetPoint(initialDistance), ref velocity, smoothTime);
             yield return waitForFixedUpdate;
+            Debug.Log(selectedObject.GetComponent<Slot>().GetCurrentPosition());
         }
         // drop
         CheckOverlappingSlots();
@@ -108,7 +109,7 @@ public class DragAndDrop : MonoBehaviour {
     private void SnapBack() {
 
         iTween.MoveTo(selectedObject, iTween.Hash("position", selectedSlot.GetCurrentPosition(), "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
-        slotManager.UpdateSlotPositions();
+        //slotManager.UpdateSlotPositions();
     }
 
 

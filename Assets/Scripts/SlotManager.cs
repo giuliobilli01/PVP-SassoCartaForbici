@@ -13,6 +13,8 @@ public class SlotManager : MonoBehaviour {
     public Transform firstPlayerSlotParent;
     public Transform secondPlayerSlotParent;
 
+    public iTween.EaseType easeType;
+
     //  Fill the lists with the slots
     private void Awake() {
         foreach (Transform child in firstPlayerSlotParent.transform) {
@@ -41,12 +43,13 @@ public class SlotManager : MonoBehaviour {
         if (currentPlayer == 1) {
             SwapSlotsInList(firstPlayerSlots, firstSlot, secondSlot);
             SwapSlotObjects(firstSlot, secondSlot);
+            UpdateSlotPositions();
         } else if (currentPlayer == 2) {
             SwapSlotsInList(secondPlayerSlots, firstSlot, secondSlot);
             SwapSlotObjects(firstSlot, secondSlot);
+            UpdateSlotPositions();
         }
-
-        UpdateSlotPositions();
+        
         pointsManager.UpdatePlayersPoints(true, false);
     }
 
@@ -69,7 +72,7 @@ public class SlotManager : MonoBehaviour {
         GameObject secondSlotObject = secondSlot.gameObject;
 
         firstSlotObject.transform.position = secondSlot.GetCurrentPosition();
-        iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.5f, "easetype", iTween.EaseType.easeOutBack));
+        iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.5f, "easetype", easeType));
     }
 
     // check which player the slots belong to
@@ -92,7 +95,7 @@ public class SlotManager : MonoBehaviour {
         }
         for (int i = 0; i < secondPlayerSlots.Count; i++) {
             secondPlayerSlots[i].SetCurrentPosition(secondPlayerSlots[i].transform.position);
-        }
+        } 
     }
 
     // reset the slots to their initial positions
