@@ -43,11 +43,11 @@ public class SlotManager : MonoBehaviour {
         if (currentPlayer == 1) {
             SwapSlotsInList(firstPlayerSlots, firstSlot, secondSlot);
             SwapSlotObjects(firstSlot, secondSlot);
-            UpdateSlotPositions();
+            UpdateSlotPositions(firstPlayerSlots);
         } else if (currentPlayer == 2) {
             SwapSlotsInList(secondPlayerSlots, firstSlot, secondSlot);
             SwapSlotObjects(firstSlot, secondSlot);
-            UpdateSlotPositions();
+            UpdateSlotPositions(secondPlayerSlots);
         }
         
         pointsManager.UpdatePlayersPoints(true, false);
@@ -72,7 +72,10 @@ public class SlotManager : MonoBehaviour {
         GameObject secondSlotObject = secondSlot.gameObject;
 
         firstSlotObject.transform.position = secondSlot.GetCurrentPosition();
-        iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.5f, "easetype", easeType));
+        iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.2f, "easetype", easeType));
+        secondSlotObject.transform.position = firstSlot.GetCurrentPosition();
+
+        // fixed swap bug, but animation is not working now
     }
 
     // check which player the slots belong to
@@ -88,14 +91,11 @@ public class SlotManager : MonoBehaviour {
     }
 
     // update the new positions of the slots
-    public void UpdateSlotPositions() {
+    public void UpdateSlotPositions(List<Slot> slotList) {
         
-        for (int i = 0; i < firstPlayerSlots.Count; i++) {
-            firstPlayerSlots[i].SetCurrentPosition(firstPlayerSlots[i].transform.position);
+        for (int i = 0; i < slotList.Count; i++) {
+            slotList[i].SetCurrentPosition(slotList[i].transform.position);
         }
-        for (int i = 0; i < secondPlayerSlots.Count; i++) {
-            secondPlayerSlots[i].SetCurrentPosition(secondPlayerSlots[i].transform.position);
-        } 
     }
 
     // reset the slots to their initial positions

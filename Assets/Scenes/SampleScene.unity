@@ -1876,7 +1876,7 @@ MonoBehaviour:
   pointsManager: {fileID: 1984305222}
   firstPlayerSlotParent: {fileID: 8029675870258584303}
   secondPlayerSlotParent: {fileID: 8029675871168686668}
-  easeType: 0
+  easeType: 21
 --- !u!4 &1094672540
 Transform:
   m_ObjectHideFlags: 0

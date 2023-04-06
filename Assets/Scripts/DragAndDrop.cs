@@ -57,7 +57,6 @@ public class DragAndDrop : MonoBehaviour {
             StartCardParallax(selectedObject);
             selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, ray.GetPoint(initialDistance), ref velocity, smoothTime);
             yield return waitForFixedUpdate;
-            Debug.Log(selectedObject.GetComponent<Slot>().GetCurrentPosition());
         }
         // drop
         CheckOverlappingSlots();
@@ -72,9 +71,9 @@ public class DragAndDrop : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) {
+
             Slot overlapSlot = hit.collider.GetComponent<Slot>();
             if (overlapSlot != null && overlapSlot != selectedSlot) {
-                
                 // avoiding cards overlapping opposite player's cards
                 if (slotManager.GetCurrentPlayer(selectedSlot, overlapSlot) == 0) {
                     SnapBack();
@@ -107,9 +106,12 @@ public class DragAndDrop : MonoBehaviour {
     }
 
     private void SnapBack() {
+        
+        Vector3 snapPosition = selectedSlot.GetCurrentPosition();
+        if (selectedObject != null && selectedSlot != null && Vector3.Distance(selectedObject.transform.position, snapPosition) > 0.5f) {
+            iTween.MoveTo(selectedObject, iTween.Hash("position", snapPosition, "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
+        }
 
-        iTween.MoveTo(selectedObject, iTween.Hash("position", selectedSlot.GetCurrentPosition(), "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
-        //slotManager.UpdateSlotPositions();
     }
 
 
