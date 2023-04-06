@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
         }
 
         if (timerManager.IsTimerPassed()) {
-            pointsManager.UpdatePlayersPoints();
+            pointsManager.UpdatePlayersPoints(false, true);
             timerManager.SetIsTimerPassed(false);
             uIManager.SetMatchResultText(pointsManager.GetMatchResult());
         }
