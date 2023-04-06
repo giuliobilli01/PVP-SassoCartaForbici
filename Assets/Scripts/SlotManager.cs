@@ -6,6 +6,9 @@ public class SlotManager : MonoBehaviour {
 
     public List<Slot> firstPlayerSlots = new List<Slot>();
     public List<Slot> secondPlayerSlots = new List<Slot>();
+    
+    [SerializeField]
+    private PointsManager pointsManager;
 
     public Transform firstPlayerSlotParent;
     public Transform secondPlayerSlotParent;
@@ -44,6 +47,7 @@ public class SlotManager : MonoBehaviour {
         }
 
         UpdateSlotPositions();
+        pointsManager.UpdatePlayersPoints(true, false);
     }
 
     // swap the slots components in the list

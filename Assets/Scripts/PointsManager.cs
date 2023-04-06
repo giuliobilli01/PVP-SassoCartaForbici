@@ -26,29 +26,12 @@ public class PointsManager : MonoBehaviour
 
     }
 
-    public void UpdatePlayersPoints() {
+    public void UpdatePlayersPoints(bool showCurrentStatus, bool showFinalStatus) {
         for(int position=0; position<3; position++) {
             CardType player1Slot = slotManager.firstPlayerSlots[position + 3].GetCardType();
             CardType player2Slot = slotManager.secondPlayerSlots[position + 3].GetCardType();
 
-            if ((player1Slot != player2Slot)) {
-                if (IsTheWinner(player1Slot, player2Slot)) {
-
-                    player1Points.AddStatus(position, SlotStatus.Win);
-                    player2Points.AddStatus(position, SlotStatus.Lose);
-                    pointsUIManager.SetTextByIndex(position, SlotStatus.Win);
-                }else {
-
-                    player1Points.AddStatus(position, SlotStatus.Lose);
-                    player2Points.AddStatus(position, SlotStatus.Win);
-                    pointsUIManager.SetTextByIndex(position, SlotStatus.Lose);
-                }
-            } else {
-            
-                    player1Points.AddStatus(position, SlotStatus.Draw);
-                    player2Points.AddStatus(position, SlotStatus.Draw);
-                    pointsUIManager.SetTextByIndex(position, SlotStatus.Draw);
-            }
+            SetPlayerPoints(player1Slot, player2Slot, position, showCurrentStatus, showFinalStatus);
         }
        Debug.Log(GetMatchResult());
     }
@@ -82,5 +65,36 @@ public class PointsManager : MonoBehaviour
         }else {
             return MatchResults.Draw;
         }
+    }
+
+    public void SetPlayerPoints(CardType player1Slot, CardType player2Slot, int position, bool showCurrentStatus, bool showFinalStatus) {
+        if ((player1Slot != player2Slot)) {
+                if (IsTheWinner(player1Slot, player2Slot)) {
+
+                    player1Points.AddStatus(position, SlotStatus.Win);
+                    player2Points.AddStatus(position, SlotStatus.Lose);
+                    if (showFinalStatus) {
+                        pointsUIManager.SetTextByIndex(position, SlotStatus.Win);
+                    } else if (showCurrentStatus) {
+                        pointsUIManager.SetMiddleTextByIndex(position,SlotStatus.Win);
+                    }
+                }else {
+
+                    player1Points.AddStatus(position, SlotStatus.Lose);
+                    player2Points.AddStatus(position, SlotStatus.Win);
+                    if (showFinalStatus) {
+                        pointsUIManager.SetTextByIndex(position, SlotStatus.Lose);
+                    } else if (showCurrentStatus) {
+                        pointsUIManager.SetMiddleTextByIndex(position, SlotStatus.Lose);
+                    }
+                }
+            } else {
+            
+                    player1Points.AddStatus(position, SlotStatus.Draw);
+                    player2Points.AddStatus(position, SlotStatus.Draw);
+                    if (showFinalStatus) {
+                        pointsUIManager.SetTextByIndex(position, SlotStatus.Draw);
+                    }
+            }
     }
 }
