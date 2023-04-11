@@ -769,11 +769,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: f4901f2b-6b42-4b76-85b6-a04a247a8bb3
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: PvP-SassoCartaForbici
+  organizationId: cloverfield3941
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
