@@ -94,6 +94,8 @@ public class PointsManager : MonoBehaviour
                     player2Points.AddStatus(position, SlotStatus.Draw);
                     if (showFinalStatus) {
                         pointsUIManager.SetTextByIndex(position, SlotStatus.Draw);
+                    } else if (showCurrentStatus) {
+                        pointsUIManager.SetMiddleTextByIndex(position, SlotStatus.Draw);
                     }
             }
     }

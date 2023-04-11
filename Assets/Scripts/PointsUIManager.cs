@@ -57,6 +57,8 @@ public class PointsUIManager : MonoBehaviour
             middleSlotsUI[index].text = "PLAYER 1 IS WINNING";
         } else if (status == SlotStatus.Lose) {
             middleSlotsUI[index].text = "PLAYER 2 IS WINNING";
+        } else if (status == SlotStatus.Draw) {
+            middleSlotsUI[index].text = "DRAW";
         }
     }
 
