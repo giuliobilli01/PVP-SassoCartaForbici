@@ -93,7 +93,7 @@ public class DragAndDrop : MonoBehaviour {
     private void StartCardParallax(GameObject selectedObject) {
         
         float maxRotationAngle = 10f;
-        float rotationSpeed = 0.5f;
+        float rotationSpeed = 2f;
 
         float additionalRotation = Mathf.Sin(Time.time * rotationSpeed) * maxRotationAngle;
         Quaternion rotation = Quaternion.Euler(0, additionalRotation, 0);
