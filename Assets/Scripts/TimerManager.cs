@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using Unity.Cloud.UserReporting.Plugin;
+using Unity.Cloud.UserReporting;
+
 
 public class TimerManager : MonoBehaviour
 {
@@ -27,6 +30,9 @@ public class TimerManager : MonoBehaviour
     void Start() {
         timerText.enabled = false;
         countdownText.enabled = false;
+        UnityUserReporting.CurrentClient.AddDeviceMetadata("METADATA_PROVA", "ciaociao");
+        UnityUserReporting.CurrentClient.LogEvent(UserReportEventLevel.Success, "LOG CON SUCCESSO");
+
     }
 
    
