@@ -64,7 +64,7 @@ public class TimerManager : MonoBehaviour
                 timerIsRunning = false;
                 isTimerPassed = true;
                 timerText.enabled = false;
-            
+                isGameStarted = false;
             }
         }
         
