@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 114007766782849930}
   - component: {fileID: 114625933949284032}
   m_Layer: 5
-  m_Name: UserReportingPrefab
+  m_Name: UserReportingPrefab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
