@@ -17,6 +17,9 @@ public class DragAndDrop : MonoBehaviour {
 
     [SerializeField] private SlotManager slotManager;
 
+    private int player1Swaps = 0;
+    private int player2Swaps = 0;
+
 
     private void Awake() {
         this.mainCamera = Camera.main;
@@ -79,6 +82,11 @@ public class DragAndDrop : MonoBehaviour {
                     SnapBack();
                 } else {
                     slotManager.Swap(selectedSlot, overlapSlot);
+                    if (slotManager.GetCurrentPlayer(selectedSlot, overlapSlot) == 1) {
+                        player1Swaps++;
+                    } else {
+                        player2Swaps++;
+                    }
                 }
     
             } else {
@@ -112,6 +120,14 @@ public class DragAndDrop : MonoBehaviour {
             iTween.MoveTo(selectedObject, iTween.Hash("position", snapPosition, "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
         }
 
+    }
+
+    public int GetPlayerSwaps(int player) {
+        if (player == 1) {
+            return player1Swaps;
+        } else {
+            return player2Swaps;
+        }
     }
 
 

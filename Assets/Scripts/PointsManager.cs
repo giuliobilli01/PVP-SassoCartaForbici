@@ -33,7 +33,7 @@ public class PointsManager : MonoBehaviour
 
             SetPlayerPoints(player1Slot, player2Slot, position, showCurrentStatus, showFinalStatus);
         }
-       Debug.Log(GetMatchResult());
+       //Debug.Log(GetMatchResult());
     }
 
     private bool IsTheWinner(CardType player, CardType opponent) {

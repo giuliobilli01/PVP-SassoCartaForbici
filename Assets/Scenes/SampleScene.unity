@@ -1046,6 +1046,10 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 223753975847277248, guid: c1aa92cd8198f654b933334ac725dc4f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224041236398545728, guid: c1aa92cd8198f654b933334ac725dc4f, type: 3}
       propertyPath: m_SizeDelta.x
       value: -534.62
@@ -1217,6 +1221,10 @@ PrefabInstance:
     - target: {fileID: 224817477411438774, guid: c1aa92cd8198f654b933334ac725dc4f, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 224993347790642560, guid: c1aa92cd8198f654b933334ac725dc4f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.787842
       objectReference: {fileID: 0}
     - target: {fileID: 1379200740515165760, guid: c1aa92cd8198f654b933334ac725dc4f, type: 3}
       propertyPath: m_Text

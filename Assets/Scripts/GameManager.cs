@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour {
             pointsManager.UpdatePlayersPoints(false, true);
             timerManager.SetIsTimerPassed(false);
             uIManager.SetMatchResultText(pointsManager.GetMatchResult());
+
+            Debug.Log("Risultato partita: " + pointsManager.GetMatchResult() + "\nMosse giocatore 1: " + dragManager.GetPlayerSwaps(1) + "\nMosse giocatore 2: " + dragManager.GetPlayerSwaps(2) + "\n");
         }
     }
 
