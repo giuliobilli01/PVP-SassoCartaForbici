@@ -1050,6 +1050,7 @@ MonoBehaviour:
   SendEventsToAnalytics: 0
   SubmittingPopup: {fileID: 223319934459786462}
   SummaryInput: {fileID: 114622765184809834}
+  NicknameInput: {fileID: 0}
   ThumbnailViewer: {fileID: 114606799002800962}
   UserReportButton: {fileID: 114657861390527956}
   UserReportForm: {fileID: 223753975847277248}
@@ -3371,7 +3372,7 @@ GameObject:
   - component: {fileID: 9072383721318223457}
   - component: {fileID: 57060558513872345}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
