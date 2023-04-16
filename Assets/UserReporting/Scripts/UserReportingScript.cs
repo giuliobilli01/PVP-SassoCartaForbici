@@ -99,6 +99,8 @@ public class UserReportingScript : MonoBehaviour
     [Tooltip("The summary input on the user report form.")]
     public InputField SummaryInput;
 
+    public InputField NicknameInput;
+
     /// <summary>
     /// Gets or sets the thumbnail viewer on the user report form.
     /// </summary>
@@ -377,6 +379,14 @@ public class UserReportingScript : MonoBehaviour
             UserReportNamedValue userReportField = new UserReportNamedValue();
             userReportField.Name = "Description";
             userReportField.Value = this.DescriptionInput.text;
+            this.CurrentUserReport.Fields.Add(userReportField);
+        }
+
+        // Set Nickname
+        if (this.NicknameInput != null) {
+            UserReportNamedValue userReportField = new UserReportNamedValue();
+            userReportField.Name = "Username";
+            userReportField.Value = this.NicknameInput.text;
             this.CurrentUserReport.Fields.Add(userReportField);
         }
 
