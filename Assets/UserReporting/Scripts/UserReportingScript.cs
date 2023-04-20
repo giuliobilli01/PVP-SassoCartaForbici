@@ -189,6 +189,7 @@ public class UserReportingScript : MonoBehaviour
     {
         this.CurrentUserReport = null;
         this.ClearForm();
+        this.ResumeGame();
     }
 
     private IEnumerator ClearError()
@@ -213,6 +214,9 @@ public class UserReportingScript : MonoBehaviour
         {
             return;
         }
+
+        // Pause 
+        this.PauseGame();
 
         // Set Creating Flag
         this.isCreatingUserReport = true;
@@ -348,8 +352,9 @@ public class UserReportingScript : MonoBehaviour
     /// </summary>
     public void SubmitUserReport()
     {
+        // Preconditions + check for empty report
         // Preconditions
-        if (this.isSubmitting || this.CurrentUserReport == null)
+        if (this.isSubmitting || this.CurrentUserReport == null || string.IsNullOrEmpty(this.SummaryInput.text) || this.CategoryDropdown == null || this.CategoryDropdown.value < 0 || this.DescriptionInput == null || string.IsNullOrEmpty(this.DescriptionInput.text))
         {
             return;
         }
@@ -396,15 +401,6 @@ public class UserReportingScript : MonoBehaviour
         // Raise Event
         this.RaiseUserReportSubmitting();
 
-        // Check if report fields are empty
-        if (this.SummaryInput.text == "" || this.DescriptionInput.text == "" || this.NicknameInput.text == "") {
-            
-            this.isShowingError = true;
-            this.StartCoroutine(this.ClearError());
-            this.isSubmitting = false;
-            return;
-        } 
-        
         // Send Report
         UnityUserReporting.CurrentClient.SendUserReport(this.CurrentUserReport, (uploadProgress, downloadProgress) =>
         {
@@ -424,6 +420,8 @@ public class UserReportingScript : MonoBehaviour
             this.CurrentUserReport = null;
             this.isSubmitting = false;
         });
+
+        this.ResumeGame();
     }
 
     private void Update()
@@ -484,6 +482,20 @@ public class UserReportingScript : MonoBehaviour
         {
             this.UserReportSubmitting.Invoke();
         }
+    }
+
+    #endregion
+
+    #region Pause Methods
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 
     #endregion
