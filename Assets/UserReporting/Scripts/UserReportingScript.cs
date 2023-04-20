@@ -396,6 +396,15 @@ public class UserReportingScript : MonoBehaviour
         // Raise Event
         this.RaiseUserReportSubmitting();
 
+        // Check if report fields are empty
+        if (this.SummaryInput.text == "" || this.DescriptionInput.text == "" || this.NicknameInput.text == "") {
+            
+            this.isShowingError = true;
+            this.StartCoroutine(this.ClearError());
+            this.isSubmitting = false;
+            return;
+        } 
+        
         // Send Report
         UnityUserReporting.CurrentClient.SendUserReport(this.CurrentUserReport, (uploadProgress, downloadProgress) =>
         {
