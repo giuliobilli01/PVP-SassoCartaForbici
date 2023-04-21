@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114676038347651840, guid: c1aa92cd8198f654b933334ac725dc4f, type: 3}
       propertyPath: UserReportingPlatform
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224041236398545728, guid: c1aa92cd8198f654b933334ac725dc4f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1762,6 +1762,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627139812}
   m_CullTransparentMesh: 1
+--- !u!1 &636948963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1330134896427848, guid: c1aa92cd8198f654b933334ac725dc4f, type: 3}
+  m_PrefabInstance: {fileID: 15740211}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &636948968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636948963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a5614bc9ece5446bd447ffacc75c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &675224252
 GameObject:
   m_ObjectHideFlags: 0

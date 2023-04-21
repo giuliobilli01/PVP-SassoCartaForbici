@@ -488,6 +488,9 @@ public class UserReportingScript : MonoBehaviour
 
     #region Pause Methods
 
+    /// <summary>
+    /// Pauses the game.
+    /// </summary>
     private void PauseGame()
     {
         Time.timeScale = 0;
@@ -497,6 +500,7 @@ public class UserReportingScript : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-
+    
     #endregion
+
 }
