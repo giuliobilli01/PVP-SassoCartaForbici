@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 //using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class DragAndDrop : MonoBehaviour {
     
@@ -34,16 +35,22 @@ public class DragAndDrop : MonoBehaviour {
 
     private void OnTouch(Finger finger) {
 
-        Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
+        var activeFingers = Touch.activeFingers;
 
-        if (Physics.Raycast(ray, out RaycastHit hit)) {
-            if (hit.collider != null) {
+        for (int i = 0; i < activeFingers.Count; i++) {
+            
+            Ray ray = this.mainCamera.ScreenPointToRay(activeFingers[i].screenPosition);
 
-                selectedObject = hit.collider.gameObject;
-                selectedSlot = selectedObject.GetComponent<Slot>();
-                StartCoroutine(MoveObject(selectedObject, finger));
+            if (Physics.Raycast(ray, out RaycastHit hit)) {
+                if (hit.collider != null) {
+
+                    selectedObject = hit.collider.gameObject;
+                    selectedSlot = selectedObject.GetComponent<Slot>();
+                    StartCoroutine(MoveObject(selectedObject, activeFingers[i]));
+                }
             }
         }
+        
     }
 
     // Coroutine for dragging the card

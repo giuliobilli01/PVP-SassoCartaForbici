@@ -1010,41 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b44b124b7d56de4797ba0df432d3ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  press:
-    m_Name: Press
-    m_Type: 0
-    m_ExpectedControlType: Button
-    m_Id: fe1ad280-1bd9-45ca-8941-2def4df205dd
-    m_Processors: 
-    m_Interactions: Press
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: afbd2124-3113-41d5-a14c-d79ae7eb2d91
-      m_Path: <Touchscreen>/Press
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Press
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 60740737-2503-4256-8289-142bd1b98464
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Press
-      m_Flags: 0
-    m_Flags: 0
-  screenPosition:
-    m_Name: Screen Position
-    m_Type: 0
-    m_ExpectedControlType: Vector2
-    m_Id: 0eff984f-f45d-4266-99de-9efe3ed1d3fa
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  smoothTime: 0.1
+  smoothTime: 0.0001
   slotManager: {fileID: 1094672539}
 --- !u!4 &259681309
 Transform:
