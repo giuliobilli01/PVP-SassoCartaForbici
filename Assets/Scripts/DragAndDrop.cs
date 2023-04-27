@@ -17,63 +17,60 @@ public class DragAndDrop : MonoBehaviour {
 
     [SerializeField] private SlotManager slotManager;
 
+    private bool isDraggable = false;
+    private bool parallax = false;
+
     private void Awake() {
         this.mainCamera = Camera.main;
     } 
 
     private void OnEnable() {
-        TouchSimulation.Enable();
         EnhancedTouchSupport.Enable();
         UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += OnTouch;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove += MoveObject;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerUp += CheckOverlappingSlots;
     }
 
     private void OnDisable() {
-        TouchSimulation.Disable();
         EnhancedTouchSupport.Disable();
         UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown -= OnTouch;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove -= MoveObject;
+        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerUp -= CheckOverlappingSlots;
     } 
 
     private void OnTouch(Finger finger) {
 
-        var activeFingers = Touch.activeFingers;
+        //Debug.Log("Finger down at " + finger.screenPosition + " with index " + finger.index);
+        Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
 
-        for (int i = 0; i < activeFingers.Count; i++) {
-            
-            Ray ray = this.mainCamera.ScreenPointToRay(activeFingers[i].screenPosition);
+        if (Physics.Raycast(ray, out RaycastHit hit)) {
+            if (hit.collider != null) {
 
-            if (Physics.Raycast(ray, out RaycastHit hit)) {
-                if (hit.collider != null) {
-
-                    selectedObject = hit.collider.gameObject;
-                    selectedSlot = selectedObject.GetComponent<Slot>();
-                    StartCoroutine(MoveObject(selectedObject, activeFingers[i]));
-                }
+                this.selectedObject = hit.collider.gameObject;
+                this.selectedSlot = selectedObject.GetComponent<Slot>();
+                isDraggable = true;
+            } else {
+                isDraggable = false;
             }
-        }
-        
-    }
+        } 
+    } 
 
-    // Coroutine for dragging the card
-    private IEnumerator MoveObject(GameObject selectedObject, Finger finger) {
+    private void MoveObject(Finger finger) {
 
         float initialDistance = Vector3.Distance(selectedObject.transform.position, this.mainCamera.transform.position);
 
-        while(finger.isActive) { // drag 
-        
+        if (isDraggable) {
+            parallax = true;
             Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
-            StartCardParallax(selectedObject);
             selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, ray.GetPoint(initialDistance), ref velocity, smoothTime);
-            yield return waitForFixedUpdate;
-        }
-        // drop
-        CheckOverlappingSlots(finger);
-        EndCardParallax(selectedObject);
-
+        } 
     }
 
 
     // Check if the card is overlapping with another slot
     private void CheckOverlappingSlots(Finger finger) {
+
+        parallax = false;
 
         Ray ray = Camera.main.ScreenPointToRay(finger.screenPosition);
         RaycastHit hit;
@@ -97,7 +94,7 @@ public class DragAndDrop : MonoBehaviour {
 
     // Parallax feature
     // when a card is being dragged, it rotates on itself
-    private void StartCardParallax(GameObject selectedObject) {
+    private void StartCardParallax() {
         
         float maxRotationAngle = 10f;
         float rotationSpeed = 2f;
@@ -105,11 +102,11 @@ public class DragAndDrop : MonoBehaviour {
         float additionalRotation = Mathf.Sin(Time.time * rotationSpeed) * maxRotationAngle;
         Quaternion rotation = Quaternion.Euler(0, additionalRotation, 0);
 
-        selectedObject.transform.rotation = rotation;
+        this.selectedObject.transform.rotation = rotation;
     }
 
-    private void EndCardParallax(GameObject selectedObject) {
-        selectedObject.transform.rotation = Quaternion.identity;
+    private void EndCardParallax() {
+        this.selectedObject.transform.rotation = Quaternion.identity;
     }
 
     private void SnapBack() {
@@ -118,8 +115,17 @@ public class DragAndDrop : MonoBehaviour {
         if (selectedObject != null && selectedSlot != null && Vector3.Distance(selectedObject.transform.position, snapPosition) > 0.5f) {
             iTween.MoveTo(selectedObject, iTween.Hash("position", snapPosition, "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
         }
-
     }
+
+    /* void Update() {
+        
+        if (parallax && selectedObject != null) {
+            StartCardParallax();
+        } else if (!parallax && selectedObject != null) {
+            EndCardParallax();
+        }
+
+    } */
 
 
 }
