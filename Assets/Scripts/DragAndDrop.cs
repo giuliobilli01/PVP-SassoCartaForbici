@@ -5,6 +5,9 @@ using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class DragAndDrop : MonoBehaviour {
+
+    // finger ID
+    [SerializeField] private int fingerID;
     
     [SerializeField] private float smoothTime = 0.1f;
     private Vector3 velocity = Vector3.zero;
@@ -39,6 +42,10 @@ public class DragAndDrop : MonoBehaviour {
     } 
 
     private void OnTouch(Finger finger) {
+        
+        if (finger.index != fingerID) {
+            return;
+        }
 
         //Debug.Log("Finger down at " + finger.screenPosition + " with index " + finger.index);
         Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
@@ -57,6 +64,10 @@ public class DragAndDrop : MonoBehaviour {
 
     private void MoveObject(Finger finger) {
 
+        if (finger.index != fingerID) {
+            return;
+        }
+
         float initialDistance = Vector3.Distance(selectedObject.transform.position, this.mainCamera.transform.position);
 
         if (isDraggable) {
@@ -69,6 +80,10 @@ public class DragAndDrop : MonoBehaviour {
 
     // Check if the card is overlapping with another slot
     private void CheckOverlappingSlots(Finger finger) {
+
+        if (finger.index != fingerID) {
+            return;
+        }
 
         parallax = false;
 
@@ -117,7 +132,7 @@ public class DragAndDrop : MonoBehaviour {
         }
     }
 
-    /* void Update() {
+    void Update() {
         
         if (parallax && selectedObject != null) {
             StartCardParallax();
@@ -125,7 +140,7 @@ public class DragAndDrop : MonoBehaviour {
             EndCardParallax();
         }
 
-    } */
+    } 
 
 
 }

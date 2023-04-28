@@ -991,6 +991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 259681309}
   - component: {fileID: 259681310}
+  - component: {fileID: 259681311}
   m_Layer: 0
   m_Name: DragManager
   m_TagString: Untagged
@@ -1025,7 +1026,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b44b124b7d56de4797ba0df432d3ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 0.1
+  fingerID: 0
+  smoothTime: 0.001
+  slotManager: {fileID: 1094672539}
+--- !u!114 &259681311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259681307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b44b124b7d56de4797ba0df432d3ce2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerID: 1
+  smoothTime: 0.001
   slotManager: {fileID: 1094672539}
 --- !u!1001 &324275448
 PrefabInstance:
