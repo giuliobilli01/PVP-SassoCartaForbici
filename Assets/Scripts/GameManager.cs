@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour {
 
     public DragAndDrop dragManager;
 
+    public AnalyticsManager analyticsManager;
+
     void Update() {
 
         if (timerManager.IsGameStarted()) {
@@ -31,10 +33,8 @@ public class GameManager : MonoBehaviour {
             timerManager.SetIsTimerPassed(false);
             uIManager.SetMatchResultText(pointsManager.GetMatchResult());
 
-            Debug.Log("Risultato partita: " + pointsManager.GetMatchResult() + "\nMosse giocatore 1: " + dragManager.GetPlayerSwaps(1) + "\nMosse giocatore 2: " + dragManager.GetPlayerSwaps(2) + "\n");
+            analyticsManager.SendMatchResultAnalytics(pointsManager.GetMatchResult(), dragManager.GetPlayerSwaps(1), dragManager.GetPlayerSwaps(2));
         }
     }
-
-    
 
 }
