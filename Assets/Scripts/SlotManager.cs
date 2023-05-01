@@ -72,7 +72,7 @@ public class SlotManager : MonoBehaviour {
         GameObject secondSlotObject = secondSlot.gameObject;
 
         firstSlotObject.transform.position = secondSlot.GetCurrentPosition();
-        iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.2f, "easetype", easeType));
+        //iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.002f, "easetype", easeType));
         secondSlotObject.transform.position = firstSlot.GetCurrentPosition();
 
         // fixed swap bug, but animation is not working now

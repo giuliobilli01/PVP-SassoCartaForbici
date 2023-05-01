@@ -1,19 +1,16 @@
 using System.Collections;
 using UnityEngine;
-//using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class DragAndDrop : MonoBehaviour {
 
-    // finger ID
     [SerializeField] private int fingerID;
     
-    [SerializeField] private float smoothTime = 0.1f;
+    [SerializeField] private float smoothTime = 0.001f;
     private Vector3 velocity = Vector3.zero;
 
     private Camera mainCamera;
-    private WaitForFixedUpdate waitForFixedUpdate = new WaitForFixedUpdate();
 
     private GameObject selectedObject;
     private Slot selectedSlot;
@@ -27,18 +24,22 @@ public class DragAndDrop : MonoBehaviour {
         this.mainCamera = Camera.main;
     } 
 
-    private void OnEnable() {
+    private void Start() {
         EnhancedTouchSupport.Enable();
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown += OnTouch;
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove += MoveObject;
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerUp += CheckOverlappingSlots;
     }
 
-    private void OnDisable() {
+    void OnEnable() {
+        EnhancedTouchSupport.Enable();
+        Touch.onFingerDown += OnTouch;
+        Touch.onFingerMove += MoveObject;
+        Touch.onFingerUp += CheckOverlappingSlots;
+    }
+
+    void OnDisable() {
         EnhancedTouchSupport.Disable();
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerDown -= OnTouch;
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerMove -= MoveObject;
-        UnityEngine.InputSystem.EnhancedTouch.Touch.onFingerUp -= CheckOverlappingSlots;
+        Touch.onFingerDown -= OnTouch;
+        Touch.onFingerMove -= MoveObject;
+        Touch.onFingerUp -= CheckOverlappingSlots;
     } 
 
     private void OnTouch(Finger finger) {
@@ -47,7 +48,7 @@ public class DragAndDrop : MonoBehaviour {
             return;
         }
 
-        //Debug.Log("Finger down at " + finger.screenPosition + " with index " + finger.index);
+        Debug.Log("Finger down at " + finger.screenPosition + " with index " + finger.index);
         Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit)) {
