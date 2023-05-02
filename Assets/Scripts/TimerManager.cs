@@ -47,6 +47,7 @@ public class TimerManager : MonoBehaviour
                 countdownIsRunning = false;
                 countdownText.enabled = false;
                 timerIsRunning = true;
+                timerText.enabled = true;  
                 isGameStarted = true;
             }
             
@@ -54,9 +55,6 @@ public class TimerManager : MonoBehaviour
 
         if (timerIsRunning) {
             if (remainingTime > 0) {
-                if (remainingTime <= 3) {
-                    timerText.enabled = true;   
-                }
                 DisplayTime(timerText, remainingTime);
                 remainingTime -= Time.deltaTime;
             }else {
