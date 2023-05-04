@@ -18,7 +18,9 @@ public class DragAndDrop : MonoBehaviour {
     [SerializeField] private SlotManager slotManager;
 
     private bool isDraggable = false;
-    private bool parallax = false;
+
+    private Vector3 minScale = new Vector3(0.08314686f, 0.08314686f, 0.08314686f);
+    private Vector3 maxScale = new Vector3(0.1171851f, 0.1171851f, 0.1171851f);
 
     private void Awake() {
         this.mainCamera = Camera.main;
@@ -48,7 +50,7 @@ public class DragAndDrop : MonoBehaviour {
             return;
         }
 
-        Debug.Log("Finger down at " + finger.screenPosition + " with index " + finger.index);
+        //Debug.Log("Finger down at " + finger.screenPosition + " with index " + finger.index);
         Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit)) {
@@ -72,9 +74,18 @@ public class DragAndDrop : MonoBehaviour {
         float initialDistance = Vector3.Distance(selectedObject.transform.position, this.mainCamera.transform.position);
 
         if (isDraggable) {
-            parallax = true;
             Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
-            selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, ray.GetPoint(initialDistance), ref velocity, smoothTime);
+
+            Vector3 newPosition = ray.GetPoint(initialDistance);
+            //newPosition.z = -0.1f;
+            selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, newPosition, ref velocity, smoothTime);
+
+            int currentPlayer = slotManager.GetCurrentPlayer(selectedSlot, selectedSlot);
+            bool isMovingUp = selectedObject.transform.position.y > selectedSlot.GetCurrentPosition().y;
+            bool isMovingDown = selectedObject.transform.position.y < selectedSlot.GetCurrentPosition().y;
+            bool shouldScaleUp = (currentPlayer == 1 && isMovingUp) || (currentPlayer == 2 && isMovingDown);
+            
+            selectedObject.transform.localScale = Vector3.Lerp(selectedObject.transform.localScale, shouldScaleUp ? maxScale : minScale, 0.1f);
         } 
     }
 
@@ -85,8 +96,6 @@ public class DragAndDrop : MonoBehaviour {
         if (finger.index != fingerID) {
             return;
         }
-
-        parallax = false;
 
         Ray ray = Camera.main.ScreenPointToRay(finger.screenPosition);
         RaycastHit hit;
@@ -108,40 +117,15 @@ public class DragAndDrop : MonoBehaviour {
         }
     }
 
-    // Parallax feature
-    // when a card is being dragged, it rotates on itself
-    private void StartCardParallax() {
-        
-        float maxRotationAngle = 10f;
-        float rotationSpeed = 2f;
-
-        float additionalRotation = Mathf.Sin(Time.time * rotationSpeed) * maxRotationAngle;
-        Quaternion rotation = Quaternion.Euler(0, additionalRotation, 0);
-
-        this.selectedObject.transform.rotation = rotation;
-    }
-
-    private void EndCardParallax() {
-        this.selectedObject.transform.rotation = Quaternion.identity;
-    }
-
     private void SnapBack() {
         
         Vector3 snapPosition = selectedSlot.GetCurrentPosition();
+        Vector3 snapScale = selectedSlot.GetCurrentScale();
+
         if (selectedObject != null && selectedSlot != null && Vector3.Distance(selectedObject.transform.position, snapPosition) > 0.5f) {
+            selectedObject.transform.localScale = snapScale;
             iTween.MoveTo(selectedObject, iTween.Hash("position", snapPosition, "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
         }
     }
-
-    void Update() {
-        
-        if (parallax && selectedObject != null) {
-            StartCardParallax();
-        } else if (!parallax && selectedObject != null) {
-            EndCardParallax();
-        }
-
-    } 
-
 
 }

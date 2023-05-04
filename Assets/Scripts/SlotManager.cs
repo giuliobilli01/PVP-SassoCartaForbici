@@ -124,4 +124,28 @@ public class SlotManager : MonoBehaviour {
         }
     }
 
+    // parallax feature
+    private void StartCardParallax(GameObject selectedObject) {
+        
+        float maxRotationAngle = 10f;
+        float rotationSpeed = 2f;
+
+        float additionalRotation = Mathf.Sin(Time.time * rotationSpeed) * maxRotationAngle;
+        Quaternion rotation = Quaternion.Euler(0, additionalRotation, 0);
+
+        selectedObject.transform.rotation = rotation;
+    }
+
+    private void EndCardParallax(GameObject selectedObject) {
+        selectedObject.transform.rotation = Quaternion.identity;
+    }
+
+
+    // scale the card if i'm moving it towards the opposite player
+     /*       if (    selectedObject.transform.position.y > selectedSlot.GetCurrentPosition().y + 0.5f && 
+                    selectedObject.transform.localScale.x < selectedSlot.GetCurrentScale().x + 0.1f) {
+                selectedObject.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+            } else if (selectedObject.transform.localScale.x > selectedSlot.GetCurrentScale().x) {
+                selectedObject.transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
+            } */
 }
