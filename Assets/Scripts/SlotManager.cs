@@ -1,3 +1,5 @@
+using System.Security.Authentication;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +23,8 @@ public class SlotManager : MonoBehaviour {
             Slot slot = child.GetComponent<Slot>();
             slot.SetInitialPosition(child.position);
             slot.SetCurrentPosition(child.position);
+            slot.SetInitialScale(child.localScale);
+            slot.SetCurrentScale(child.localScale);
             firstPlayerSlots.Add(slot);
         }
 
@@ -28,6 +32,8 @@ public class SlotManager : MonoBehaviour {
             Slot slot = child.GetComponent<Slot>();
             slot.SetInitialPosition(child.position);
             slot.SetCurrentPosition(child.position);
+            slot.SetInitialScale(child.localScale);
+            slot.SetCurrentScale(child.localScale);
             secondPlayerSlots.Add(slot);
         }
     }
@@ -43,11 +49,11 @@ public class SlotManager : MonoBehaviour {
         if (currentPlayer == 1) {
             SwapSlotsInList(firstPlayerSlots, firstSlot, secondSlot);
             SwapSlotObjects(firstSlot, secondSlot);
-            UpdateSlotPositions(firstPlayerSlots);
+            UpdateSlotsData(firstPlayerSlots);
         } else if (currentPlayer == 2) {
             SwapSlotsInList(secondPlayerSlots, firstSlot, secondSlot);
             SwapSlotObjects(firstSlot, secondSlot);
-            UpdateSlotPositions(secondPlayerSlots);
+            UpdateSlotsData(secondPlayerSlots);
         }
         
         pointsManager.UpdatePlayersPoints(true, false);
@@ -71,11 +77,13 @@ public class SlotManager : MonoBehaviour {
         GameObject firstSlotObject = firstSlot.gameObject;
         GameObject secondSlotObject = secondSlot.gameObject;
 
-        firstSlotObject.transform.position = secondSlot.GetCurrentPosition();
         //iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.002f, "easetype", easeType));
-        secondSlotObject.transform.position = firstSlot.GetCurrentPosition();
-
         // fixed swap bug, but animation is not working now
+        firstSlotObject.transform.position = secondSlot.GetCurrentPosition();
+        firstSlotObject.transform.localScale = secondSlot.GetCurrentScale();
+
+        secondSlotObject.transform.position = firstSlot.GetCurrentPosition();
+        secondSlotObject.transform.localScale = firstSlot.GetCurrentScale();
     }
 
     // check which player the slots belong to
@@ -90,24 +98,29 @@ public class SlotManager : MonoBehaviour {
         }
     }
 
-    // update the new positions of the slots
-    public void UpdateSlotPositions(List<Slot> slotList) {
+    // update the new positions and scale of the slots
+    public void UpdateSlotsData(List<Slot> slotList) {
         
         for (int i = 0; i < slotList.Count; i++) {
             slotList[i].SetCurrentPosition(slotList[i].transform.position);
+            slotList[i].SetCurrentScale(slotList[i].transform.localScale);
         }
     }
 
     // reset the slots to their initial positions
-    public void ResetSlotPositions() {
+    public void ResetSlotsData() {
         for (int i = 0; i < firstPlayerSlots.Count; i++) {
             firstPlayerSlots[i].transform.position = firstPlayerSlots[i].GetInitialPosition();
             firstPlayerSlots[i].SetCurrentPosition(firstPlayerSlots[i].GetInitialPosition());
+            firstPlayerSlots[i].transform.localScale = firstPlayerSlots[i].GetInitialScale();
+            firstPlayerSlots[i].SetCurrentScale(firstPlayerSlots[i].GetInitialScale());
         }
 
         for (int i = 0; i < secondPlayerSlots.Count; i++) {
             secondPlayerSlots[i].transform.position = secondPlayerSlots[i].GetInitialPosition();
             secondPlayerSlots[i].SetCurrentPosition(secondPlayerSlots[i].GetInitialPosition());
+            secondPlayerSlots[i].transform.localScale = secondPlayerSlots[i].GetInitialScale();
+            secondPlayerSlots[i].SetCurrentScale(secondPlayerSlots[i].GetInitialScale());
         }
     }
 

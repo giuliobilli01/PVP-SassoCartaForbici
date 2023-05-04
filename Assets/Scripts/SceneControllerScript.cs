@@ -10,7 +10,7 @@ public class SceneControllerScript : MonoBehaviour
 
     public void ResetScene() {
         sceneControl.Reset();
-        slotManager.ResetSlotPositions();
+        slotManager.ResetSlotsData();
     }
 
     public void GoToMenu() {

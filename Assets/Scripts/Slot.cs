@@ -12,6 +12,9 @@ public class Slot : MonoBehaviour {
     private Vector3 initialPosition; // for resetting
     private Vector3 currentPosition; // for handling swap 
 
+    private Vector3 initialScale; // for resetting
+    private Vector3 currentScale; // for handling swap
+
     // awake
     private void Awake() {
 
@@ -41,6 +44,22 @@ public class Slot : MonoBehaviour {
 
     public Vector3 GetInitialPosition() {
         return this.initialPosition;
+    }
+
+    public void SetCurrentScale(Vector3 scale) {
+        this.currentScale = scale;
+    }
+
+    public Vector3 GetCurrentScale() {
+        return this.currentScale;
+    }
+
+    public void SetInitialScale(Vector3 scale) {
+        this.initialScale = scale;
+    }
+
+    public Vector3 GetInitialScale() {
+        return this.initialScale;
     }
 
 }
