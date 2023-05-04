@@ -15,7 +15,9 @@ public class SlotManager : MonoBehaviour {
     public Transform firstPlayerSlotParent;
     public Transform secondPlayerSlotParent;
 
-    public iTween.EaseType easeType;
+    [SerializeField] private iTween.EaseType easeType;
+
+    public bool parallaxEnabled = true;
 
     //  Fill the lists with the slots
     private void Awake() {
@@ -140,12 +142,22 @@ public class SlotManager : MonoBehaviour {
         selectedObject.transform.rotation = Quaternion.identity;
     }
 
+    private void FixedUpdate() {
 
-    // scale the card if i'm moving it towards the opposite player
-     /*       if (    selectedObject.transform.position.y > selectedSlot.GetCurrentPosition().y + 0.5f && 
-                    selectedObject.transform.localScale.x < selectedSlot.GetCurrentScale().x + 0.1f) {
-                selectedObject.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
-            } else if (selectedObject.transform.localScale.x > selectedSlot.GetCurrentScale().x) {
-                selectedObject.transform.localScale -= new Vector3(0.01f, 0.01f, 0.01f);
-            } */
+        int[] tableIndexes = new int[] {3, 4, 5};
+
+        if (parallaxEnabled) {
+            for (int i = 0; i < tableIndexes.Length; i++) {
+                StartCardParallax(firstPlayerSlots[tableIndexes[i]].gameObject);
+                StartCardParallax(secondPlayerSlots[tableIndexes[i]].gameObject);
+            }
+        } else {
+            for (int i = 0; i < tableIndexes.Length; i++) {
+                EndCardParallax(firstPlayerSlots[tableIndexes[i]].gameObject);
+                EndCardParallax(secondPlayerSlots[tableIndexes[i]].gameObject);
+            }
+        }
+        
+    }
+    
 }
