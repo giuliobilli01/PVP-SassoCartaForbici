@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenuScript : MonoBehaviour
-{
+public class MainMenuScript : MonoBehaviour {
+
    [SerializeField]
    private SceneControl sceneControl;
+   public Animator animator;
 
    public void StartGame() {
-        this.sceneControl.Load();
+      
+      animator.SetTrigger("FadeStart");
+      this.sceneControl.Load();
    }
 
    public void QuitGame() {
-    this.sceneControl.Quit();
+      this.sceneControl.Quit();
    }
 
     
