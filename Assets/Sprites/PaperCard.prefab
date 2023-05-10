@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 758074475149910032}
   - component: {fileID: 2577620876639921864}
   - component: {fileID: -6910696217743811459}
+  - component: {fileID: 639899694053325848}
   m_Layer: 0
   m_Name: PaperCard
   m_TagString: Untagged
@@ -657,6 +658,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13.727313, y: 19.13666, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!210 &639899694053325848
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5909022447583731827}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &6429030564493578832
 GameObject:
   m_ObjectHideFlags: 0

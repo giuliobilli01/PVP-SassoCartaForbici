@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 2299188212818107954}
   - component: {fileID: -5947333313424564191}
   - component: {fileID: 8522656905165806621}
+  - component: {fileID: 5405414736534271773}
   m_Layer: 0
   m_Name: ScissorsCard
   m_TagString: Untagged
@@ -321,6 +322,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13.690166, y: 19.311687, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!210 &5405414736534271773
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892244540520024302}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &4259174868398253869
 GameObject:
   m_ObjectHideFlags: 0

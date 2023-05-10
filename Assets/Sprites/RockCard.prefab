@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5016559084650570238}
   - component: {fileID: -7397488379941742891}
   - component: {fileID: 216057749962976460}
+  - component: {fileID: -517490624744023380}
   m_Layer: 0
   m_Name: RockCard
   m_TagString: Untagged
@@ -69,6 +70,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13.634508, y: 19.25603, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!210 &-517490624744023380
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417156614250659834}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1604549399869087611
 GameObject:
   m_ObjectHideFlags: 0

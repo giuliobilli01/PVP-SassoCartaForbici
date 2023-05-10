@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.Rendering;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class DragAndDrop : MonoBehaviour {
@@ -74,15 +75,18 @@ public class DragAndDrop : MonoBehaviour {
         float initialDistance = Vector3.Distance(selectedObject.transform.position, this.mainCamera.transform.position);
 
         if (isDraggable) {
-            Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
 
+            Ray ray = this.mainCamera.ScreenPointToRay(finger.screenPosition);
             Vector3 newPosition = ray.GetPoint(initialDistance);
-            //newPosition.z = -0.1f;
+
+            SortingGroup sortingGroup = selectedObject.GetComponent<SortingGroup>();
+            sortingGroup.sortingOrder = 1;
+
             selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, newPosition, ref velocity, smoothTime);
 
             int currentPlayer = slotManager.GetCurrentPlayer(selectedSlot, selectedSlot);
-            bool isMovingUp = selectedObject.transform.position.y > selectedSlot.GetCurrentPosition().y;
-            bool isMovingDown = selectedObject.transform.position.y < selectedSlot.GetCurrentPosition().y;
+            bool isMovingUp = selectedObject.transform.position.y > selectedSlot.GetCurrentPosition().y && Mathf.Abs(selectedObject.transform.position.y - selectedSlot.GetCurrentPosition().y) > 0.1f;
+            bool isMovingDown = selectedObject.transform.position.y < selectedSlot.GetCurrentPosition().y && Mathf.Abs(selectedObject.transform.position.y - selectedSlot.GetCurrentPosition().y) > 0.1f;
             bool shouldScaleUp = (currentPlayer == 1 && isMovingUp) || (currentPlayer == 2 && isMovingDown);
             
             selectedObject.transform.localScale = Vector3.Lerp(selectedObject.transform.localScale, shouldScaleUp ? maxScale : minScale, 0.1f);
@@ -108,6 +112,7 @@ public class DragAndDrop : MonoBehaviour {
                     SnapBack();
                 } else {
                     slotManager.Swap(selectedSlot, overlapSlot);
+                    ResetSortingOrder();
                 }
     
             } else {
@@ -119,6 +124,8 @@ public class DragAndDrop : MonoBehaviour {
 
     private void SnapBack() {
         
+        ResetSortingOrder();
+
         Vector3 snapPosition = selectedSlot.GetCurrentPosition();
         Vector3 snapScale = selectedSlot.GetCurrentScale();
 
@@ -126,6 +133,11 @@ public class DragAndDrop : MonoBehaviour {
             selectedObject.transform.localScale = snapScale;
             iTween.MoveTo(selectedObject, iTween.Hash("position", snapPosition, "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
         }
+    }
+
+    private void ResetSortingOrder() {
+        SortingGroup sortingGroup = selectedObject.GetComponent<SortingGroup>();
+        sortingGroup.sortingOrder = 0;
     }
 
 }
