@@ -26,6 +26,10 @@ public class PointsManager : MonoBehaviour
 
     }
 
+    void Update() {
+       
+    }
+
     public void UpdatePlayersPoints(bool showCurrentStatus, bool showFinalStatus) {
         for(int position=0; position<3; position++) {
             CardType player1Slot = slotManager.firstPlayerSlots[position + 3].GetCardType();
@@ -33,7 +37,8 @@ public class PointsManager : MonoBehaviour
 
             SetPlayerPoints(player1Slot, player2Slot, position, showCurrentStatus, showFinalStatus);
         }
-       Debug.Log(GetMatchResult());
+        pointsUIManager.ShowPlayerPoints(0, player1Points.GetNumberOfWin());
+        pointsUIManager.ShowPlayerPoints(1, player2Points.GetNumberOfWin());
     }
 
     private bool IsTheWinner(CardType player, CardType opponent) {
@@ -73,30 +78,17 @@ public class PointsManager : MonoBehaviour
 
                     player1Points.AddStatus(position, SlotStatus.Win);
                     player2Points.AddStatus(position, SlotStatus.Lose);
-                    if (showFinalStatus) {
-                        pointsUIManager.SetTextByIndex(position, SlotStatus.Win);
-                    } else if (showCurrentStatus) {
-                        pointsUIManager.SetMiddleTextByIndex(position,SlotStatus.Win);
-                    }
                 }else {
 
                     player1Points.AddStatus(position, SlotStatus.Lose);
                     player2Points.AddStatus(position, SlotStatus.Win);
-                    if (showFinalStatus) {
-                        pointsUIManager.SetTextByIndex(position, SlotStatus.Lose);
-                    } else if (showCurrentStatus) {
-                        pointsUIManager.SetMiddleTextByIndex(position, SlotStatus.Lose);
-                    }
                 }
             } else {
             
                     player1Points.AddStatus(position, SlotStatus.Draw);
                     player2Points.AddStatus(position, SlotStatus.Draw);
-                    if (showFinalStatus) {
-                        pointsUIManager.SetTextByIndex(position, SlotStatus.Draw);
-                    } else if (showCurrentStatus) {
-                        pointsUIManager.SetMiddleTextByIndex(position, SlotStatus.Draw);
-                    }
+                  
             }
+        }
     }
-}
+

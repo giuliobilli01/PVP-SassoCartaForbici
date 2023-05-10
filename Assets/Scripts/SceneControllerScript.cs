@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 public class SceneControllerScript : MonoBehaviour
 {
     public SlotManager slotManager;
+
     public SceneControl sceneControl;
+
+    public UIManager uIManager;
+
+    public GameObject gameOverPanel;
+
 
     public void ResetScene() {
         sceneControl.Reset();
@@ -15,5 +21,10 @@ public class SceneControllerScript : MonoBehaviour
 
     public void GoToMenu() {
         sceneControl.Load();
+    }
+
+    public void GameOver() {
+        uIManager.SetMatchResultText();
+        gameOverPanel.SetActive(true);
     }
 }

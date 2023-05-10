@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum MatchResults {
     Player1Win,
@@ -14,9 +15,14 @@ public class GameManager : MonoBehaviour {
 
     public TimerManager timerManager;
 
-    public UIManager uIManager;
-
     public DragAndDrop dragManager;
+
+    public SceneControllerScript sceneController;
+
+
+    void Start() {
+        timerManager.StartCountdown();
+    }
 
     void Update() {
 
@@ -29,7 +35,7 @@ public class GameManager : MonoBehaviour {
         if (timerManager.IsTimerPassed()) {
             pointsManager.UpdatePlayersPoints(false, true);
             timerManager.SetIsTimerPassed(false);
-            uIManager.SetMatchResultText(pointsManager.GetMatchResult());
+            sceneController.GameOver();
         }
     }
 

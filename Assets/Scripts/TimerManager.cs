@@ -9,9 +9,11 @@ public class TimerManager : MonoBehaviour
     // Start is called before the first frame update
     public float remainingTime;
     public float countdownTime;
+
+    public SliderManager sliderManager;
     
-    [SerializeField]
-    private TMP_Text timerText;
+    // [SerializeField]
+    // private TMP_Text timerText;
     
     [SerializeField]
     private TMP_Text countdownText;
@@ -25,7 +27,7 @@ public class TimerManager : MonoBehaviour
     private bool isGameStarted = false;
 
     void Start() {
-        timerText.enabled = false;
+        //timerText.enabled = false;
         countdownText.enabled = false;
     }
 
@@ -38,30 +40,29 @@ public class TimerManager : MonoBehaviour
                 DisplayTime(countdownText, countdownTime);
                 countdownTime -= Time.deltaTime;
             
-            } else if(countdownTime <= 0 && countdownTime >= -1) {
+            } else if(countdownTime <= 0 && countdownTime > -1) {
                 countdownText.text = "SWAP!";
                 countdownTime -= Time.deltaTime;
-            
             } else {
+                countdownText.enabled = false;
                 countdownTime = -1;
                 countdownIsRunning = false;
-                countdownText.enabled = false;
                 timerIsRunning = true;
-                timerText.enabled = true;  
                 isGameStarted = true;
             }
             
         }
 
         if (timerIsRunning) {
-            if (remainingTime > 0) {
-                DisplayTime(timerText, remainingTime);
-                remainingTime -= Time.deltaTime;
+            if (remainingTime <= 10) {
+                sliderManager.updateSlider(remainingTime);
+                remainingTime += Time.deltaTime;
             }else {
-                remainingTime = 0;
+                remainingTime = 11;
                 timerIsRunning = false;
                 isTimerPassed = true;
-                timerText.enabled = false;
+                isGameStarted = false;
+                //timerText.enabled = false;
             
             }
         }

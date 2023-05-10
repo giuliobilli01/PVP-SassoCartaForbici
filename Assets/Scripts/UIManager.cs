@@ -5,23 +5,25 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-   public TMP_Text matchResultText;
+   public TMP_Text player1Result;
+
+   public TMP_Text player2Result;
 
    public PointsUIManager pointsUIManager;
 
-   void Awake() {
-    matchResultText.enabled = false;
-   }
+   public PointsManager pointsManager;
 
-   public void SetMatchResultText(MatchResults result) {
-        pointsUIManager.DisableMiddleText();
-        matchResultText.enabled = true;
+   public void SetMatchResultText() {
+        MatchResults result = pointsManager.GetMatchResult();
         if(result == MatchResults.Player1Win) {
-            matchResultText.text = "PLAYER 1 WIN";
+            player1Result.text = "YOU WIN!";
+            player2Result.text = "YOU LOSE!";
         }else if (result == MatchResults.Player2Win) {
-            matchResultText.text = "PLAYER 2 WIN";
+            player1Result.text = "YOU LOSE!";
+            player2Result.text = "YOU WIN!";
         }else {
-            matchResultText.text = "DRAW";
+            player1Result.text = "DRAW!";
+            player2Result.text = "DRAW!";
         }
    }
 
