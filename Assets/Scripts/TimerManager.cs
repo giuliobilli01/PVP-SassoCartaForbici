@@ -26,6 +26,8 @@ public class TimerManager : MonoBehaviour
 
     private bool isGameStarted = false;
 
+    [SerializeField] private Animator animator;
+
     void Start() {
         //timerText.enabled = false;
         countdownText.enabled = false;
@@ -57,6 +59,11 @@ public class TimerManager : MonoBehaviour
             if (remainingTime <= 10) {
                 sliderManager.updateSlider(remainingTime);
                 remainingTime += Time.deltaTime;
+
+                /* if (remainingTime <= 3) {
+                    animator.SetTrigger("Pulse");
+                } */
+
             }else {
                 remainingTime = 11;
                 timerIsRunning = false;

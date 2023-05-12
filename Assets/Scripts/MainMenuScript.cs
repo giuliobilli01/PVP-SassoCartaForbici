@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour {
 
-   [SerializeField]
-   private SceneControl sceneControl;
-   public Animator animator;
+   [SerializeField] private SceneControl sceneControl;
+   [SerializeField] private Animator animator;
 
    public void StartGame() {
       

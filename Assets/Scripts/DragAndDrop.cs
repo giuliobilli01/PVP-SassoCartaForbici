@@ -82,6 +82,8 @@ public class DragAndDrop : MonoBehaviour {
             SortingGroup sortingGroup = selectedObject.GetComponent<SortingGroup>();
             sortingGroup.sortingOrder = 1;
 
+            // reset object rotation
+            selectedObject.transform.rotation = Quaternion.identity;
             selectedObject.transform.position = Vector3.SmoothDamp(selectedObject.transform.position, newPosition, ref velocity, smoothTime);
 
             int currentPlayer = slotManager.GetCurrentPlayer(selectedSlot, selectedSlot);
@@ -128,9 +130,11 @@ public class DragAndDrop : MonoBehaviour {
 
         Vector3 snapPosition = selectedSlot.GetCurrentPosition();
         Vector3 snapScale = selectedSlot.GetCurrentScale();
+        Quaternion snapRotation = selectedSlot.GetCurrentRotation();
 
         if (selectedObject != null && selectedSlot != null && Vector3.Distance(selectedObject.transform.position, snapPosition) > 0.5f) {
             selectedObject.transform.localScale = snapScale;
+            selectedObject.transform.rotation = snapRotation;
             iTween.MoveTo(selectedObject, iTween.Hash("position", snapPosition, "time", 0.2f, "easetype", iTween.EaseType.easeOutBack));
         }
     }

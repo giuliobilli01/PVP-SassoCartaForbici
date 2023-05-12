@@ -12,8 +12,11 @@ public class Slot : MonoBehaviour {
     private Vector3 initialPosition; // for resetting
     private Vector3 currentPosition; // for handling swap 
 
-    private Vector3 initialScale; // for resetting
-    private Vector3 currentScale; // for handling swap
+    private Vector3 initialScale; 
+    private Vector3 currentScale; 
+
+    private Quaternion initialRotation; 
+    private Quaternion currentRotation;
 
     // awake
     private void Awake() {
@@ -62,6 +65,21 @@ public class Slot : MonoBehaviour {
         return this.initialScale;
     }
 
+    public void SetCurrentRotation(Quaternion rotation) {
+        this.currentRotation = rotation;
+    }
+
+    public Quaternion GetCurrentRotation() {
+        return this.currentRotation;
+    }
+
+    public void SetInitialRotation(Quaternion rotation) {
+        this.initialRotation = rotation;
+    }
+
+    public Quaternion GetInitialRotation() {
+        return this.initialRotation;
+    }
 }
 
 

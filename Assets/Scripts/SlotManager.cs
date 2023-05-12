@@ -1,5 +1,3 @@
-using System.Security.Authentication;
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,27 +13,19 @@ public class SlotManager : MonoBehaviour {
     public Transform firstPlayerSlotParent;
     public Transform secondPlayerSlotParent;
 
-    [SerializeField] private iTween.EaseType easeType;
-
     public bool parallaxEnabled = true;
 
     //  Fill the lists with the slots
     private void Awake() {
         foreach (Transform child in firstPlayerSlotParent.transform) {
             Slot slot = child.GetComponent<Slot>();
-            slot.SetInitialPosition(child.position);
-            slot.SetCurrentPosition(child.position);
-            slot.SetInitialScale(child.localScale);
-            slot.SetCurrentScale(child.localScale);
+            InitializeSlot(slot, child);
             firstPlayerSlots.Add(slot);
         }
 
         foreach (Transform child in secondPlayerSlotParent.transform) {
             Slot slot = child.GetComponent<Slot>();
-            slot.SetInitialPosition(child.position);
-            slot.SetCurrentPosition(child.position);
-            slot.SetInitialScale(child.localScale);
-            slot.SetCurrentScale(child.localScale);
+            InitializeSlot(slot, child);
             secondPlayerSlots.Add(slot);
         }
     }
@@ -79,13 +69,14 @@ public class SlotManager : MonoBehaviour {
         GameObject firstSlotObject = firstSlot.gameObject;
         GameObject secondSlotObject = secondSlot.gameObject;
 
-        //iTween.MoveTo(secondSlotObject, iTween.Hash("position", firstSlot.GetCurrentPosition(), "time", 0.002f, "easetype", easeType));
-        // fixed swap bug, but animation is not working now
         firstSlotObject.transform.position = secondSlot.GetCurrentPosition();
         firstSlotObject.transform.localScale = secondSlot.GetCurrentScale();
+        firstSlotObject.transform.rotation = secondSlot.GetCurrentRotation();
 
         secondSlotObject.transform.position = firstSlot.GetCurrentPosition();
         secondSlotObject.transform.localScale = firstSlot.GetCurrentScale();
+        secondSlotObject.transform.rotation = firstSlot.GetCurrentRotation();
+
     }
 
     // check which player the slots belong to
@@ -100,12 +91,25 @@ public class SlotManager : MonoBehaviour {
         }
     }
 
+    // initializing slots data
+    public void InitializeSlot(Slot slot, Transform transform) {
+
+        slot.SetInitialPosition(transform.position);
+        slot.SetCurrentPosition(transform.position);
+        slot.SetInitialScale(transform.localScale);
+        slot.SetCurrentScale(transform.localScale);
+        slot.SetInitialRotation(transform.rotation);
+        slot.SetCurrentRotation(transform.rotation);
+
+    }
+
     // update the new positions and scale of the slots
     public void UpdateSlotsData(List<Slot> slotList) {
         
         for (int i = 0; i < slotList.Count; i++) {
             slotList[i].SetCurrentPosition(slotList[i].transform.position);
             slotList[i].SetCurrentScale(slotList[i].transform.localScale);
+            slotList[i].SetCurrentRotation(slotList[i].transform.rotation);
         }
     }
 
@@ -116,6 +120,8 @@ public class SlotManager : MonoBehaviour {
             firstPlayerSlots[i].SetCurrentPosition(firstPlayerSlots[i].GetInitialPosition());
             firstPlayerSlots[i].transform.localScale = firstPlayerSlots[i].GetInitialScale();
             firstPlayerSlots[i].SetCurrentScale(firstPlayerSlots[i].GetInitialScale());
+            firstPlayerSlots[i].transform.rotation = firstPlayerSlots[i].GetInitialRotation();
+            firstPlayerSlots[i].SetCurrentRotation(firstPlayerSlots[i].GetInitialRotation());
         }
 
         for (int i = 0; i < secondPlayerSlots.Count; i++) {
@@ -123,6 +129,8 @@ public class SlotManager : MonoBehaviour {
             secondPlayerSlots[i].SetCurrentPosition(secondPlayerSlots[i].GetInitialPosition());
             secondPlayerSlots[i].transform.localScale = secondPlayerSlots[i].GetInitialScale();
             secondPlayerSlots[i].SetCurrentScale(secondPlayerSlots[i].GetInitialScale());
+            secondPlayerSlots[i].transform.rotation = secondPlayerSlots[i].GetInitialRotation();
+            secondPlayerSlots[i].SetCurrentRotation(secondPlayerSlots[i].GetInitialRotation());
         }
     }
 
