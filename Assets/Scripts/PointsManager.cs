@@ -78,16 +78,18 @@ public class PointsManager : MonoBehaviour
 
                     player1Points.AddStatus(position, SlotStatus.Win);
                     player2Points.AddStatus(position, SlotStatus.Lose);
+                    pointsUIManager.ShowMatchStatus(position, 1);
                 }else {
 
                     player1Points.AddStatus(position, SlotStatus.Lose);
                     player2Points.AddStatus(position, SlotStatus.Win);
+                    pointsUIManager.ShowMatchStatus(position, 2);
                 }
             } else {
             
                     player1Points.AddStatus(position, SlotStatus.Draw);
                     player2Points.AddStatus(position, SlotStatus.Draw);
-                  
+                    pointsUIManager.ShowMatchStatus(position, 0);
             }
         }
     }
