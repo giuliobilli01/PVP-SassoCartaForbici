@@ -56,16 +56,16 @@ public class TimerManager : MonoBehaviour
         }
 
         if (timerIsRunning) {
-            if (remainingTime <= 10) {
+            if (remainingTime >= 0) {
                 sliderManager.updateSlider(remainingTime);
-                remainingTime += Time.deltaTime;
+                remainingTime -= Time.deltaTime;
 
                 /* if (remainingTime <= 3) {
                     animator.SetTrigger("Pulse");
                 } */
 
             }else {
-                remainingTime = 11;
+                remainingTime = -1;
                 timerIsRunning = false;
                 isTimerPassed = true;
                 isGameStarted = false;

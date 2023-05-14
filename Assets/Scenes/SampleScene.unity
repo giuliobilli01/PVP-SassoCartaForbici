@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 15
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 3
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 15
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -3100,7 +3100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 882c4f21ffbc91b499de2da5e76f9440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainingTime: 0
+  remainingTime: 15
   countdownTime: 3
   sliderManager: {fileID: 173002579}
   countdownText: {fileID: 627139814}
