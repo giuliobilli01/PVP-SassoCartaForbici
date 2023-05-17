@@ -22,7 +22,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.41568628
+        value: 0.6603774
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -33,7 +33,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.r
-    path: Q_Vignette_Single
+    path: Vignetta1
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -41,7 +41,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.10991453
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -52,7 +52,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.g
-    path: Q_Vignette_Single
+    path: Vignetta1
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -60,7 +60,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5882353
+        value: 0.06522777
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -71,7 +71,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.b
-    path: Q_Vignette_Single
+    path: Vignetta1
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -79,26 +79,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: mainColor.a
-    path: Q_Vignette_Single
-    classID: 114
-    script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.41568628
+        value: 0.66038
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -109,7 +90,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.r
-    path: Q_Vignette_Single (1)
+    path: Vignetta2
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -117,7 +98,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.10980392
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -128,7 +109,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.g
-    path: Q_Vignette_Single (1)
+    path: Vignetta2
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -136,7 +117,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5882353
+        value: 0.065223455
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -147,26 +128,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.b
-    path: Q_Vignette_Single (1)
-    classID: 114
-    script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: mainColor.a
-    path: Q_Vignette_Single (1)
+    path: Vignetta2
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -203,7 +165,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainScale
-    path: Q_Vignette_Single
+    path: Vignetta2
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -240,7 +202,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainScale
-    path: Q_Vignette_Single (1)
+    path: Vignetta1
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   m_PPtrCurves: []
@@ -252,71 +214,57 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1020752860
+      path: 105680799
       attribute: 2417051897
       script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3907258323
+      path: 2672156197
       attribute: 2417051897
       script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1020752860
+      path: 2672156197
       attribute: 2868677275
       script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1020752860
+      path: 2672156197
       attribute: 3340856944
       script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1020752860
+      path: 2672156197
       attribute: 3075185407
       script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1020752860
-      attribute: 776129349
-      script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
-      typeID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 3907258323
+      path: 105680799
       attribute: 2868677275
       script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3907258323
+      path: 105680799
       attribute: 3340856944
       script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3907258323
+      path: 105680799
       attribute: 3075185407
-      script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
-      typeID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 3907258323
-      attribute: 776129349
       script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
       typeID: 114
       customType: 0
@@ -348,7 +296,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.41568628
+        value: 0.6603774
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -359,7 +307,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.r
-    path: Q_Vignette_Single
+    path: Vignetta1
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -367,7 +315,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.10991453
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -378,7 +326,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.g
-    path: Q_Vignette_Single
+    path: Vignetta1
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -386,7 +334,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5882353
+        value: 0.06522777
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -397,7 +345,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.b
-    path: Q_Vignette_Single
+    path: Vignetta1
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -405,26 +353,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: mainColor.a
-    path: Q_Vignette_Single
-    classID: 114
-    script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.41568628
+        value: 0.66038
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -435,7 +364,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.r
-    path: Q_Vignette_Single (1)
+    path: Vignetta2
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -443,7 +372,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.10980392
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -454,7 +383,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.g
-    path: Q_Vignette_Single (1)
+    path: Vignetta2
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -462,7 +391,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5882353
+        value: 0.065223455
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -473,26 +402,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainColor.b
-    path: Q_Vignette_Single (1)
-    classID: 114
-    script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: mainColor.a
-    path: Q_Vignette_Single (1)
+    path: Vignetta2
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -529,7 +439,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainScale
-    path: Q_Vignette_Single
+    path: Vignetta2
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   - curve:
@@ -566,7 +476,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: mainScale
-    path: Q_Vignette_Single (1)
+    path: Vignetta1
     classID: 114
     script: {fileID: 11500000, guid: a768d47a92a298944b9a3009acca6ade, type: 3}
   m_EulerEditorCurves: []

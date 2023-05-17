@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,11 +61,13 @@ public class TimerManager : MonoBehaviour
                 sliderManager.updateSlider(remainingTime);
                 remainingTime -= Time.deltaTime;
 
-                /* if (remainingTime <= 3) {
+                if (remainingTime <= 5) {
                     animator.SetTrigger("Pulse");
-                } */
+                } 
 
             }else {
+
+                animator.SetTrigger("EndPulse");
                 remainingTime = -1;
                 timerIsRunning = false;
                 isTimerPassed = true;
