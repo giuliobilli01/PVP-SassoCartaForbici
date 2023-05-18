@@ -37,8 +37,8 @@ public class PointsManager : MonoBehaviour
 
             SetPlayerPoints(player1Slot, player2Slot, position, showCurrentStatus, showFinalStatus);
         }
-        pointsUIManager.ShowPlayerPoints(0, player1Points.GetNumberOfWin());
-        pointsUIManager.ShowPlayerPoints(1, player2Points.GetNumberOfWin());
+        // pointsUIManager.ShowPlayerPoints(0, player1Points.GetNumberOfWin());
+        // pointsUIManager.ShowPlayerPoints(1, player2Points.GetNumberOfWin());
     }
 
     private bool IsTheWinner(CardType player, CardType opponent) {

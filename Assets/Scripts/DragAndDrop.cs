@@ -20,8 +20,8 @@ public class DragAndDrop : MonoBehaviour {
 
     private bool isDraggable = false;
 
-    private Vector3 minScale = new Vector3(0.08314686f, 0.08314686f, 0.08314686f);
     private Vector3 maxScale = new Vector3(0.1171851f, 0.1171851f, 0.1171851f);
+    private Vector3 minScale = new Vector3(0.09931892f, 0.09931892f, 0.09931892f);
 
     private void Awake() {
         this.mainCamera = Camera.main;

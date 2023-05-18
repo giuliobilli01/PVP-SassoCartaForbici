@@ -13,15 +13,15 @@ public class PointsUIManager : MonoBehaviour
 
     public Sprite player2WinImage;
 
-    [SerializeField]
-    private  List<TMP_Text> pointsUI = new List<TMP_Text>();
+    /* [SerializeField]
+    private  List<TMP_Text> pointsUI = new List<TMP_Text>(); */
     
     [SerializeField]
     private List<Image> matchStatusUI = new List<Image>();
 
-    public void ShowPlayerPoints(int player, int points) {
+    /* public void ShowPlayerPoints(int player, int points) {
         pointsUI[player].text = points.ToString();
-    }
+    } */
 
     public void ShowMatchStatus(int position, int winner) {
         matchStatusUI[position].enabled = true;
