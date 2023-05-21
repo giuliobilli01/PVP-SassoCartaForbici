@@ -12,6 +12,8 @@ public class SceneControllerScript : MonoBehaviour
     public UIManager uIManager;
 
     public GameObject gameOverPanel;
+    public GameObject circleLeft;
+    public GameObject circleRight;
 
 
     public void ResetScene() {
@@ -26,5 +28,7 @@ public class SceneControllerScript : MonoBehaviour
     public void GameOver() {
         uIManager.SetMatchResultText();
         gameOverPanel.SetActive(true);
+        circleLeft.SetActive(false);
+        circleRight.SetActive(false);
     }
 }

@@ -11,7 +11,7 @@ public class SliderManager : MonoBehaviour
    private SliderController slider2;
 
    public void updateSlider(float timerProgress) {
-    slider1.UpdateTimerProgress(timerProgress);
-    slider2.UpdateTimerProgress(timerProgress);
+      slider1.UpdateTimerProgress(timerProgress);
+      slider2.UpdateTimerProgress(timerProgress);
    }
 }
