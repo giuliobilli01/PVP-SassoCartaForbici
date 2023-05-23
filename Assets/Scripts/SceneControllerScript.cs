@@ -26,6 +26,7 @@ public class SceneControllerScript : MonoBehaviour
     }
 
     public void GameOver() {
+        slotManager.SnapAllSlotsBack();
         uIManager.SetMatchResultText();
         gameOverPanel.SetActive(true);
         circleLeft.SetActive(false);

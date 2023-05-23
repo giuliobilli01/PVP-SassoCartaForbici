@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
 using UnityEngine;
 
 public class SlotManager : MonoBehaviour {
@@ -131,6 +132,24 @@ public class SlotManager : MonoBehaviour {
             secondPlayerSlots[i].SetCurrentScale(secondPlayerSlots[i].GetInitialScale());
             secondPlayerSlots[i].transform.rotation = secondPlayerSlots[i].GetInitialRotation();
             secondPlayerSlots[i].SetCurrentRotation(secondPlayerSlots[i].GetInitialRotation());
+        }
+    }
+
+    // reset the slots to their previous position -> snapback all the slots
+    // used for handling game over
+    public void SnapAllSlotsBack() {
+        for (int i = 0; i < firstPlayerSlots.Count; i++) {
+            firstPlayerSlots[i].GetComponent<SortingGroup>().sortingOrder = 0;
+            firstPlayerSlots[i].transform.position = firstPlayerSlots[i].GetCurrentPosition();
+            firstPlayerSlots[i].transform.localScale = firstPlayerSlots[i].GetCurrentScale();
+            firstPlayerSlots[i].transform.rotation = firstPlayerSlots[i].GetCurrentRotation();
+        }
+
+        for (int i = 0; i < secondPlayerSlots.Count; i++) {
+            secondPlayerSlots[i].GetComponent<SortingGroup>().sortingOrder = 0;
+            secondPlayerSlots[i].transform.position = secondPlayerSlots[i].GetCurrentPosition();
+            secondPlayerSlots[i].transform.localScale = secondPlayerSlots[i].GetCurrentScale();
+            secondPlayerSlots[i].transform.rotation = secondPlayerSlots[i].GetCurrentRotation();
         }
     }
 
