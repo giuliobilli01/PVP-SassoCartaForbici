@@ -20,11 +20,14 @@ public class DragAndDrop : MonoBehaviour {
 
     private bool isDraggable = false;
 
-    private Vector3 maxScale = new Vector3(0.1171851f, 0.1171851f, 0.1171851f);
-    private Vector3 minScale = new Vector3(0.09931892f, 0.09931892f, 0.09931892f);
+    private Vector3 maxScale, minScale;
 
     private void Awake() {
         this.mainCamera = Camera.main;
+
+        // gather the maxScale (table slot) and minScale (hand slot) 
+        maxScale = slotManager.firstPlayerSlots[3].GetInitialScale();
+        minScale = slotManager.firstPlayerSlots[0].GetInitialScale();
     } 
 
     private void Start() {
