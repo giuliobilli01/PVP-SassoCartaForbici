@@ -16,6 +16,9 @@ public class SlotManager : MonoBehaviour {
 
     public bool parallaxEnabled = true;
 
+    [SerializeField] 
+    private TokenPulseAnimation tokenPulseAnimation;
+
     //  Fill the lists with the slots
     private void Awake() {
         foreach (Transform child in firstPlayerSlotParent.transform) {
@@ -49,7 +52,9 @@ public class SlotManager : MonoBehaviour {
             UpdateSlotsData(secondPlayerSlots);
         }
         
+        tokenPulseAnimation.PlayPulseAnimation(firstSlot, currentPlayer);
         pointsManager.UpdatePlayersPoints(true, false);
+        StartCoroutine(tokenPulseAnimation.WaitAndStopAnimation());
     }
 
     // swap the slots components in the list

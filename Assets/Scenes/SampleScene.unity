@@ -2243,9 +2243,8 @@ MonoBehaviour:
   pointsManager: {fileID: 1984305222}
   firstPlayerSlotParent: {fileID: 8029675870258584303}
   secondPlayerSlotParent: {fileID: 1172275410}
-  maxScaleSize: {x: 0, y: 0, z: 0}
-  minScaleSize: {x: 0, y: 0, z: 0}
   parallaxEnabled: 1
+  tokenPulseAnimation: {fileID: 1476533585}
 --- !u!4 &1094672540
 Transform:
   m_ObjectHideFlags: 0
@@ -2807,6 +2806,8 @@ GameObject:
   - component: {fileID: 1476533580}
   - component: {fileID: 1476533579}
   - component: {fileID: 1476533583}
+  - component: {fileID: 1476533584}
+  - component: {fileID: 1476533585}
   m_Layer: 5
   m_Name: UICanvas
   m_TagString: Untagged
@@ -2918,6 +2919,41 @@ MonoBehaviour:
   ellipseRight: {fileID: 723752773}
   leftCard: {fileID: 555330409}
   rightCard: {fileID: 497178726}
+--- !u!95 &1476533584
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476533578}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 803c92fecb3440541bc68443ef9f7b04, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1476533585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476533578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e2a212ed6057b40a191af2afb4f16d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1476533584}
+  slotManager: {fileID: 1094672539}
 --- !u!1001 &1516603681
 PrefabInstance:
   m_ObjectHideFlags: 0
